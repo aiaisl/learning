@@ -6,6 +6,9 @@
 	<script type="text/javascript" src="../resources/jquery.js"></script>
 	<link rel="stylesheet" href="../resources/reset.css">
 	<style type="text/css">
+	body{
+		line-height: 120%;
+	}
 .poem {
   margin: 0 2em;
 }
@@ -49,5 +52,14 @@
           </div>
         </div>
       </div>
+      <script type="text/javascript">
+      $(document).ready(function(){
+      	$('div.poem-stanza').addClass('highlight');
+      })//ready 接受匿名函数为参数
+      function addHighlightClass () {
+      	$('div.poem-stanza').addClass('highlight');
+      }
+      $(document).ready(addHighlightClass)
+      </script>
 </body>
 </html>

@@ -6,6 +6,39 @@
 	<script type="text/javascript" src="../resources/jquery.js"></script>
   <link rel="stylesheet" href="../resources/reset.css">
 	<link rel="stylesheet" href="../Code/Chapter 2/02.css">
+  <style type="text/css">
+  .horizontal{
+    float: left;
+    list-style: none;
+    margin: 10px;
+  }
+  a{
+    color: #00c;
+  }
+  a.mailto{
+    background: url(../Code/Chapter 2/images/email.png) no-repeat right top;
+    padding-right: 18px;
+  }
+  a.pdflink{
+    background: url(../Code/Chapter 2/images/pdf.png) no-repeat right top;
+    padding-right: 18px;
+  }
+  a.benrylink{
+    background-color: #fff;
+    padding: 2px;
+    border: 1px solid #000;
+  }
+  tr{
+    background: #fff;
+  }
+  .alt{
+    background: #ccc;
+  }
+  a.external{
+    background: #fff url(../Code/Chapter 2/images/external.png) no-repeat 100% 2px;
+    padding-right: 16px;
+  }
+  </style>
 </head>
 <body>
     <div id="container">
@@ -94,5 +127,22 @@
         </tr>
       </table>
     </div>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('#selected-plays > li').addClass('horizontal');
+      $('#selected-plays li:not(.horizontal)').addClass('sub-level');
+      $('a[href^="mailto"]').addClass('mailto');
+      $('a[href$=".pdf"]').addClass('pdflink');
+      $('a[href^="http"][href*="henry"]').addClass('henrylink');
+      console.log($('div.horizontal:eq(1)'));
+
+      $('tr:nth-child(odd)').addClass('alt');
+      $('td:contains(Henry)').siblings().addBack().addClass('highlight');
+
+      $('a').filter(function(){
+        return this.hostname && this.hostname != location.hostname;
+      }).addClass('external');
+    });
+    </script>
 </body>
 </html>

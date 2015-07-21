@@ -143,6 +143,16 @@
         return this.hostname && this.hostname != location.hostname;
       }).addClass('external');
     });
+
+    $('td').filter(function(index) {
+      return $(this).prevAll().length == 2 ? true : false;
+    }).addClass('year');
+
+    $('td:contains("Tragedy")').parent('tr').addClass('special')
+
+    $('li a').parents('li').siblings().addClass('afterlink');
+
+    $('a[href$="pdf"]').parents('ul').eq(0).addClass('tragedy')
     </script>
 </body>
 </html>

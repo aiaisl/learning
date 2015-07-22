@@ -13,8 +13,38 @@
     <script src="../Code/Chapter 8/08.js"></script>
     <script type="text/javascript">
     (function($){
-    	console.log($);
+    	$.sum = function(array) {
+    		var total = 0;
+    		$.each(array, function(index, value){
+    			value = $.trim(value);
+    			value = parseFloat(value) || 0;
+
+    			total += value;
+    		})
+    		return total;
+    	};
+    	$.average = function(array){
+    		if($.isArray(array)) {
+    			return $.sum(array) / array.length;
+    		}
+    		return '';
+    	}
     })(jQuery)
+    $(function(){
+	    var $inventory = $('#inventory tbody');
+	    var quantities = $inventory.find('td:nth-child(2)').map(function(index, qty){
+	    	return $(qty).text();
+	    }).get();
+	    var sum = $.sum(quantities);
+	    $('#sum').find('td:nth-child(2)').text(sum);
+
+	    var prices = $inventory.find('td:nth-child(3)').map(function(index, qty){
+	    	return $(qty).text();
+	    }).get();
+
+	    var average = $.average(prices);
+	    $('#average').find('td:nth-child(3)').text(average.toFixed(2));
+    })
     </script>
   </head>
   <body>

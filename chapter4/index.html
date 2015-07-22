@@ -10,22 +10,50 @@
     <script src="../Code/Chapter 4/jquery.js"></script>
     <script src="../Code/Chapter 4/04.js"></script>
     <style type="text/css">
+    body{
+      display: none;
+    }
     #switcher{
       position: relative;
     }
     </style>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
+      $('body').fadeIn('slow');
+      $('p').eq(2).css('border', '1px solid #333')
+      .click(function(event) {
+        var $clickedItem = $(this);
+        $(this).next().slideDown('slow', function(){
+          $clickedItem.slideUp('slow');
+        });
+      }).end().on('mouseover', function(){
+        $(this).css({
+          backgroundColor : 'yellow'
+        })
+      }).on('mouseout', function(){
+        $(this).css({
+          backgroundColor : 'white'
+        })
+      })
+      $('p').eq(3).css('backgroundColor', '#ccc').hide();
       $('div.label').click(function(){
         var paraWidth = $('div.speech p').outerWidth();
         var $switcher = $(this).parent();
         var switcherWidth = $switcher.outerWidth();
-        console.log(paraWidth);
-        $switcher.animate({
-          borderWidth : '5px',
-          left : paraWidth - switcherWidth,
-          height : '+=20px'
-        }, 'slow');
+        $switcher
+          .css({position : 'relative'})
+          .fadeTo('fast', 0.5)
+          .animate({
+            left : paraWidth - switcherWidth
+          }, {
+            duration : 'slow',
+            queue : false
+          })
+          .fadeTo('slow', 1.0)
+          .slideUp('slow', function(){
+            $switcher.css({backgroundColor : '#f00'});
+          })
+          .slideDown('slow');
       })
       var $speech = $('div.speech');
       var defaultSize = $speech.css('fontSize');
@@ -55,6 +83,33 @@
         } else {
           $(this).text('read more');
         }
+      });
+      $('h2').click(function(event) {
+        $(this).animate({
+          opacity : '25',
+          marginLeft : '20px'
+        },'slow', function(){
+          $('.speech').animate({'opacity': "0.5"});
+        })
+      });
+      $(document).keydown(function(event) {
+        var arrow = '';
+        $switcher = $('#switcher');
+        switch (event.keyCode){
+          case 37 : //←
+            $switcher.stop().animate({left : '-=20px'}, 'fast')
+            arrow = 'left';
+            break;
+          case 38 : //↑
+            $switcher.stop().animate({top : '-=20px'}, 'fast')
+            break;
+          case 39 : //->
+            $switcher.stop().animate({left : '+=20px'}, 'fast')
+            break;
+          case 40 : //↓
+            $switcher.stop().animate({top : '+=20px'}, 'fast')
+            break;
+          }
       });
     });
     </script>

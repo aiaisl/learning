@@ -9,8 +9,24 @@
 
     <script src="../Code/Chapter 4/jquery.js"></script>
     <script src="../Code/Chapter 4/04.js"></script>
+    <style type="text/css">
+    #switcher{
+      position: relative;
+    }
+    </style>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
+      $('div.label').click(function(){
+        var paraWidth = $('div.speech p').outerWidth();
+        var $switcher = $(this).parent();
+        var switcherWidth = $switcher.outerWidth();
+        console.log(paraWidth);
+        $switcher.animate({
+          borderWidth : '5px',
+          left : paraWidth - switcherWidth,
+          height : '+=20px'
+        }, 'slow');
+      })
       var $speech = $('div.speech');
       var defaultSize = $speech.css('fontSize');
       $('#switcher button').click(function(event) {
@@ -25,14 +41,14 @@
           default :
             num = parseFloat(defaultSize);
         }
-        $speech.css('fontSize', num + 'px');
+        $speech.animate({'fontSize': num + 'px'}, 'slow');
       });
 
       var $firstPara = $('p').eq(1);
       $firstPara.hide();
       $('a.more').click(function(event) {
         event.preventDefault();
-        $firstPara.slideToggle('slow');
+        $firstPara.animate({opacity : 'toggle', height : 'toggle'}, 'slow');
         var $link = $(this);
         if($link.text() == 'read more'){
           $(this).text('read less');

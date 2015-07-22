@@ -9,6 +9,26 @@
 
     <script src="../Code/Chapter 4/jquery.js"></script>
     <script src="../Code/Chapter 4/04.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      var $speech = $('div.speech');
+      var defaultSize = $speech.css('fontSize');
+      $('#switcher button').click(function(event) {
+        var num = parseFloat($speech.css('fontSize'));
+        switch (this.id) {
+          case 'switcher-large' : 
+            num = num * 1.4;
+            break;
+          case 'switcher-small' :
+            num = num / 1.4;
+            break;
+          default :
+            num = parseFloat(defaultSize);
+        }
+        $speech.css('fontSize', num + 'px');
+      });
+    });
+    </script>
   </head>
   <body>
     <div id="container">

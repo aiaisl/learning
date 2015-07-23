@@ -11,12 +11,10 @@
     <script src="../Code/chapter 6/06.js"></script>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
-      $('#letter-a a').click(function(event) {
+      $('#letter-e a').click(function(event) {
         event.preventDefault();
         var requestData = {term : $(this).text()};
-        $.get('e.php', requestData, function(){
-          $('#dictionary').html(data);
-        });
+        $('#dictionary').load('e.php', requestData);
       });
       $('#letter-b a').click(function(event) {
         event.preventDefault();

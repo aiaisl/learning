@@ -11,6 +11,15 @@
     <script src="../Code/chapter 6/06.js"></script>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
+      $loading = $('<div id="loading">Loading...</div>').insertBefore('#dictionary');
+
+      $(document).ajaxStart(function() {
+        $loading.show();
+      }).ajaxStop(function() {
+        $loading.hide();
+      });
+      
+      
       $('#letter-f form').submit(function(event) {
         event.preventDefault();
         var formValues = $(this).serialize();

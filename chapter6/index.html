@@ -13,8 +13,10 @@
     jQuery(document).ready(function($) {
       $('#letter-a a').click(function(event) {
         event.preventDefault();
-        $('#dictionary').load('a.html');
-
+        var requestData = {term : $(this).text()};
+        $.get('e.php', requestData, function(){
+          $('#dictionary').html(data);
+        });
       });
       $('#letter-b a').click(function(event) {
         event.preventDefault();

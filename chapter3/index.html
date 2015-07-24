@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>A Christmas Carol</title>
+    <title>事件</title>
 
     <link rel="stylesheet" href="../Code/Chapter 3/03.css" type="text/css" />
 
@@ -16,20 +16,54 @@
     .selected {
     	font-weight: bold;
     }
+    .hidden{
+        display: none;
+    }
+    .hover{
+        cursor: pointer;
+        background-color: #afa;
+    }
     </style>
     <script type="text/javascript">
     $(function(){
         $('#switcher-default').addClass('selected')
-    	$('#switcher-large').on('click', function(){
-    		$('body').addClass('large');
-    	})
-    	$('#switcher-narrow').on('click', function(){
-    		$('body').addClass('narrow');
-    	})
-        $('#switcher button').on('click', function(){
-            $('body').removeClass();
-            $('#switcher button').removeClass('selected');
-            $(this).addClass('selected');
+        $('#switcher').on('click', function(event){
+            if($(event.target).is('button')) {
+                var bodyClass = event.target.id.split('-')[1];
+                $('body').removeClass().addClass(bodyClass);
+                $('#switcher button').removeClass('selected');
+                $(event.target).addClass('selected');
+                event.stopPropagation();
+                event.preventDefault();
+            } else {
+                $('#switcher button').toggleClass('hidden');
+            }
+        })
+
+        var toggleSwitcher = function(event){
+            if(!$(event.target).is('button')) {
+                $('#switcher button').toggleClass('hidden');
+            }
+        }
+
+        $('#switcher').on('click.collapse', toggleSwitcher);
+
+        $('#switcher h3').hover(function(){
+            $(this).addClass('hover');
+        }, function(){
+            $(this).removeClass('hover');
+        })
+
+        var triggers = {
+            D : 'default',
+            N : 'narrow',
+            L : 'large'
+        }
+        $(document).keyup(function(event){
+            var key = String.fromCharCode(event.which);
+            if(key in triggers){
+                $('#switcher-' + triggers[key]).click();
+            }
         })
     })
     </script>

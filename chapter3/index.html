@@ -19,25 +19,18 @@
     </style>
     <script type="text/javascript">
     $(function(){
+        $('#switcher-default').addClass('selected')
     	$('#switcher-large').on('click', function(){
-    		$('body').removeClass('narrow');
     		$('body').addClass('large');
-    		$('#switcher button').removeClass('selected');
-    		$(this).addClass('selected');
     	})
     	$('#switcher-narrow').on('click', function(){
     		$('body').addClass('narrow');
-    		$('body').removeClass('large');
-    		$('#switcher button').removeClass('selected');
-    		$(this).addClass('selected');
     	})
-    	$('#switcher-default').on('click', function(){
-    		$('body').removeClass('narrow');
-    		$('body').removeClass('large');
-    		$('#switcher button').removeClass('selected');
-    		$(this).addClass('selected');
-    	})
-
+        $('#switcher button').on('click', function(){
+            $('body').removeClass();
+            $('#switcher button').removeClass('selected');
+            $(this).addClass('selected');
+        })
     })
     </script>
   </head>

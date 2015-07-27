@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Set a cookie based on a form</title>
+	<script>
+	window.onload = nameFieldInit;
+	function nameFieldInit() {
+		var userName = "";
+		if(document.cookie != "") {
+			userName = document.cookie.split("=")[1];
+		}
+
+		document.getElementById("nameField").value = userName;
+		document.getElementById("nameField").onblur = setCookie;
+		document.getElementById("cookieForm").onsubmit = setCookie;
+	}
+
+	function setCookie() {
+		var expireDate = new Date();
+		expireDate.setMonth(expireDate.getMonth() + 6);
+		var userName = document.getElementById("nameField").value;
+		document.cookie = "userName=" + userName + "; expires=" + expireDate.toGMTString();
+		document.getElementById("nameField").blur();
+		return false;
+	}
+	</script>	
+</head>
+<body>
+	<form id="cookieForm">
+		<h1>Enter your name: <input type="text" id="nameField"></h1>
+	</form>
+</body>
+</html>

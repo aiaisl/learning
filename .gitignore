@@ -1,3 +1,4 @@
 /.idea
 /.phpintel
-/Learning-jQuery/test/node_modules
+/*/test/node_modules
+/*/node_modules

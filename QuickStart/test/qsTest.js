@@ -16,8 +16,11 @@ client
 */
 client
 	.init()
-	.url("http://localhost/ngy2/")
-	.click('.login-button=登录')
-	.setValue('#email', "abcdefg@abc.com")
-	.setValue("#pwd", "password")
-	.click("#login")
+	.url("http://localhost:8080/")
+	.setValue("#textArea","hello")
+	.submitForm('form').then(function(){
+		client.getText('body>p').then(function(value){
+			console.log(value);
+		})
+		.end();
+	})

@@ -37,8 +37,11 @@
 <body>
 	<form action="#">
 		<p><textarea id="textArea" rows="5" cols="30"></textarea></p>
-		<input type="submit" value="Add some text to the page">
+		<p><label><input type="radio" name="nodeAction">Add node</label>
+		<label><input type="radio" name="nodeAction">Delete node</label></p>
+		Paragraph #: <select id="grafCount"></select>
+		<input type="submit" value="Submit">
 	</form>
-	<a id="deleteNode" href="#">Delete last paragraph</a>
+	<div id="modifiable"> </div>
 </body>
 </html>

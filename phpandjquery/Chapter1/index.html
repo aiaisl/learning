@@ -6,48 +6,21 @@
 	<script type="text/javascript" src="../../resources/jquery.js"></script>
 </head>
 	<body>
-		<ul>
-			<li>India</li>
-			<li>USA</li>
-			<li>UK</li>
-			<li>France</li>
-		</ul>
-
-		<select> 
-			<option value="Africa">Africa</option>
-			<option value="Antarctica">Antarctica</option>
-			<option value="Asia">Asia</option>
-			<option value="Australia">Australia</option>
-			<option value="Europe">Europe</option>
-			<option value="North America">North America</option>
-			<option value="South America">South America</option>
-		</select>
-
-		<input type="button" value="Unbind select box"/>
+		<input type="button" id="button" value="Create New Element"/>
 		
-		<input type="text" id="a" value="Enter some text"/>
+		<div class="future">Already on page</div>
 
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('li').bind('click', function(){
-			$(this).css('background-color', 'red');
-		});
-
-		$('#a').on({
-			focus : function(){
-				$(this).val('');
-			},
-			blur: function(){
-				$(this).val('Enter some text');
-			}
+		$('#button').click(function(){
+			$('body').append('<div class"future">I am a new div</div>');
 		})
-
-		$('select').bind('change', function(){
-			alert("You selected:" + $(this).val());
-		})
-
-		$('input:button').bind('click', function(){
-			$('select').unbind('change');
+		$('body').on('click', 'div', function(){
+			$(this).css({
+				'color' : 'red',
+				'font-weight' : 'bold'
+			})
+			.html('You click me');
 		})
 	});
 	</script>

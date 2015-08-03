@@ -5,10 +5,41 @@
 	<title>使用jQuery处理事件</title>
 	<script type="text/javascript" src="../../resources/jquery.js"></script>
 </head>
-<body>
+	<body>
+		<ul>
+			<li>India</li>
+			<li>USA</li>
+			<li>UK</li>
+			<li>France</li>
+		</ul>
+
+		<select> 
+			<option value="Africa">Africa</option>
+			<option value="Antarctica">Antarctica</option>
+			<option value="Asia">Asia</option>
+			<option value="Australia">Australia</option>
+			<option value="Europe">Europe</option>
+			<option value="North America">North America</option>
+			<option value="South America">South America</option>
+		</select>
+
+		<input type="button" value="Unbind select box"/>
+		
+		<input type="text" id="a" value="Enter some text"/>
+
 	<script type="text/javascript">
 	$(document).ready(function(){
+		$('li').bind('click', function(){
+			$(this).css('background-color', 'red');
+		});
 
+		$('select').bind('change', function(){
+			alert("You selected:" + $(this).val());
+		})
+
+		$('input:button').bind('click', function(){
+			$('select').unbind('change');
+		})
 	});
 	</script>
 </body>

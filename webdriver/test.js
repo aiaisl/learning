@@ -1,23 +1,20 @@
-var path = require('path');
 var Nightmare = require('nightmare');
-var should = require('chai').should();
+var expect = require('chai').expect; // jshint ignore:line
 
-describe('Nightmare demo', function () {
-    this.timeout(15000); // Set timeout to 15 seconds, instead of the original 2 seconds
+describe('test yahoo search results', function() {
+  this.timeout(30000);
 
-    var url = 'http://localhost/ngy2';
-
-    describe('首页', function () {
-        it('首页标题等于用户名', function (done) {
-            new Nightmare({weak:false})
-                .goto(url)
-                .evaluate(function () {
-                    return $('.hyzx h2').text();
-                }, function (result) {
-                    result.should.equal("行业资讯");
-                    done();
-                })
-                .run();
-        });
-    });
+  it('should find the nightmare github link first', function(done) {
+    new Nightmare()
+      .goto('http://yahoo.com')
+        .type('input[title="Search"]', 'github nightmare')
+        .click('.searchsubmit')
+        .wait('.url.breadcrumb')
+        .evaluate(function () {
+          return document.querySelector('.url.breadcrumb').innerText;
+        }, function (breadcrumb) {
+          expect(breadcrumb).to.equal('github.com');
+        })
+        .run(done);
+  });
 });

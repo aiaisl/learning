@@ -1,12 +1,19 @@
 <?php
-	$responseString = 'Dear '.$_POST['fullName'].', Your contact information has been saved.';
-	$responseString.= 'You entered the following information: ';
-	$responseString.= '<br/>';
-	$responseString.= '<strong>E-mail:</strong> '.$_POST['email'];
-	$responseString.= '<br/>';
-	$responseString.= '<strong>Sex:</strong> '.$_POST['sex'];
-	$responseString.= '<br/>';
-	$responseString.= '<strong>Country:</strong> '.$_POST['country'];
-	header('Content-type:text/html');
-	echo $responseString;
-?>
+sleep(10);
+$names = array();
+ if($_GET['what'] == 'good') {
+ 	$names = array('Sherlock Holmes', 'John Wastson');
+ } else if($_GET['what'] == 'bad') {
+ 	$names = array('Professor Moriarty', 'Sebastian Moran', 'Charles Milverton', 'Von Bork', 'Count Sylvius');
+ 	
+ }
+echo getHTML($names);
+ function getHTML($names)
+ {
+ 	$strResult = '<ul>';
+ 	for($i =0; $i < count($names); $i++) {
+ 		$strResult .= '<li>' . $names[$i] . '</li>';
+ 	}
+ 	$strResult .= '</ul>';
+ 	return $strResult;
+ }

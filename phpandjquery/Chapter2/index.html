@@ -4,31 +4,35 @@
 	<meta charset="UTF-8">
 	<title>使用jQuery和PHP</title>
 		<style type="text/css">
-			body { border:1px solid black;margin:0 auto;text-align:center;width:700px; }
-			div { padding:10px;border:1px dotted black; }
-			#footer > a { font-size:12px;margin:50px; }
+			ul{ border:1px solid black; list-style:none;margin:0pt;padding:0pt;float:left;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;width:300px;	}
+			li{	padding:10px 5px;border-bottom:1px solid black;}
+			span{ color:red;}
 		</style>
-
 	<script type="text/javascript" src="../../resources/jquery.js"></script>
 </head>
 <body>
-		<div>
-			<div id="head"><h2>My new awesome page</h2></div>
-			<div id="content">
-				<span>
-				Aliquam quis massa at elit fermentum vestibulum. Vestibulum id nunc et nulla placerat gravida. Praesent sed purus ante. Vestibulum pulvinar tortor sed odio accumsan a cursus magna pellentesque. In hac habitasse platea dictumst. Cras viverra sodales sem in facilisis. Nulla congue, risus eget gravida feugiat, nisi ante laoreet est, ullamcorper hendrerit lacus velit eget urna. Suspendisse rutrum lacus eget nulla semper sit amet egestas tellus scelerisque. Maecenas at vulputate enim. Etiam blandit magna iaculis tellus tincidunt vel ornare diam. 
-</span>
-			</div>
-			<div id="footer">
-				<a href="#" id="loadFooter">Show footer</a>
-			</div>
-		</div>
+		<label for="fileName">Enter file name to load: </label>
+		<input type="text" id="fileName"/>
+		<input type="button" value="Load file"/>
+		<p id="result"></p>
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$('#loadFooter').click(function(){
-			$('#footer').load('Recipe6/footer.html');
+		$('input:button').click(function(){
+			if($('#fileName').val() == '') {
+				$('#result').html('<span>Please provide a file name.</span>');
+				return;
+			}
+			$.ajax({
+				url : $('#fileName').val(),
+				method : 'get',
+				success: function(data){
+					$('#result').html(data);
+				},
+				error : function() {
+					$('#result').html('<span>An error occured.</span>')
+				}
+			})
 		})
-		$('#loadFooter').trigger('click');
 	});
 	</script>
 </body>

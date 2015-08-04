@@ -25,6 +25,7 @@
 			$.ajax({
 				url : $('#fileName').val(),
 				method : 'get',
+				cache : false,
 				success: function(data){
 					$('#result').html(data);
 				},

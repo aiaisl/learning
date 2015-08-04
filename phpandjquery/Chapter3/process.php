@@ -1,30 +1,30 @@
 <?php
- $bookId = $_GET['id'];
- $action = $_GET['action'];
- $strResponse = '';
- $objXML = simplexml_load_file('common.xml');
- foreach($objXML->book as $book)
- {
- 	if($book['index'] == $bookId)
- 	{
- 		if($action == 'year')
- 		{
- 			$strResponse = 'This book was published in year: ' . $book->name['year'];
- 		}
- 		else if($action == 'stories')
- 		{
- 			$stories = $book->story;
- 			$strResponse = '<ul>';
- 			foreach ($stories as $story) {
- 				$strResponse .= '<li>' . $story->title . '</li>';
- 			}
- 			$strResponse .= '</ul>';
- 		}
-	 	else
-	 	{
-	 		$strResponse = 'Nothing to do';
-	 	}
-	 	break;
- 	}
- }
- echo $strResponse;
+$objXML = simpleXml_load_file('common.xml');
+if(!$objXML)
+{
+	echo 'Error loading xml';
+}
+else
+{
+	$response = '';
+	$action = $_GET['action'];
+	switch($action)
+	{
+		case 'all':
+			$book = $objXML->xpath('//book/name');
+			$response .= '</ul>';
+			foreach ($book as $item) {
+				$response .= '<li>';
+				$response .= $item[0] . '(' . $item['year'] . ')';
+				$response .= '</li>';
+			}
+			$response .= '</ul>';
+			break;
+		case 'total':
+			$response .= '<ul>';
+			$stroes = $objXML->xpath('//story');
+			foreach ($stroes as $story) {
+				
+			}
+	}
+}

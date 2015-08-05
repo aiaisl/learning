@@ -22,13 +22,13 @@
         <![endif]-->
 
     </head>
-    <body class="homepage">
+    <body class="homepage" data-spy="scroll" data-target=".navbar">
         <!--[if lte IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
     <header role="banner">
-        <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+        <nav role="navigation" id="navbar" class="navbar navbar-default navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -55,8 +55,10 @@
       <!-- INTRO SECTION -->
       <section id="welcome" class="jumbotron">
         <div class="container">
-          <h1><strong>Big</strong> Welcome Message</h1>
-          <p>Ingenious marketing copy. And some <em>more</em> ingenious marketing copy.<a href="#features" class="btn btn-lg btn-primary pull-right">Learn more <span class="icon fa fa-arrow-circle-down"></span></a></p>
+          <div class="welcome-message">
+            <h1><strong>Big</strong> Welcome Message</h1>
+            <p>Ingenious marketing copy. And some <em>more</em> ingenious marketing copy.<a href="#features" class="btn btn-lg btn-primary pull-right">Learn more <span class="icon fa fa-arrow-circle-down"></span></a></p>
+          </div>
         </div>
       </section>
 
@@ -65,32 +67,32 @@
         <div class="container">
           <h1>Features</h1>
           <div class="row">
-            <div class="features-item col-md-4">
+            <div class="features-item col-md-4 col-sm-6">
               <span class="icon fa fa-cloud"></span>
               <h2>Feature 1</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo. </p>
             </div>
-            <div class="features-item col-md-4">
+            <div class="features-item col-md-4 col-sm-6">
               <span class="icon fa fa-group"></span>
               <h2>Feature 2</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo. </p>
             </div>
-            <div class="features-item col-md-4">
+            <div class="features-item col-md-4 col-sm-6">
               <span class="icon fa fa-comments"></span>
               <h2>Feature 3</h2>
               <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
             </div>
-            <div class="features-item col-md-4">
+            <div class="features-item col-md-4 col-sm-6">
               <span class="icon fa fa-leaf"></span>
               <h2>Feature 4</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo. </p>
             </div>
-            <div class="features-item col-md-4">
+            <div class="features-item col-md-4 col-sm-6">
               <span class="icon fa fa-download"></span>
               <h2>Feature 5</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo. </p>
             </div>
-            <div class="features-item col-md-4">
+            <div class="features-item col-md-4 col-sm-6">
               <span class="icon fa fa-coffee"></span>
               <h2>Feature 6</h2>
               <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
@@ -103,50 +105,50 @@
       <section id="impact">
         <div class="container">
           <h1>Impact</h1>
-          <div class="reviews">
-            <div class="hreview review-item-1 thumbnail">
+          <div class="reviews js-masonry" data-masonry-options='{"itemSelector" : ".hreview"}'>
+            <div class="hreview review-item-1 thumbnail col-sm-6 col-md-4">
               <img src="img/smiling1-by-RomainGuy-600x900.jpg" alt="Customer Photo1">
               <div class="caption">
                 <blockquote class="description"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod, nulla pretium commodo ultricies</p></blockquote>
                 <p class="reviewer">Smiling Customer1</p>
               </div><!-- /.caption -->
             </div><!-- /.hreview -->
-            <div class="hreview review-item-2 thumbnail">
+            <div class="hreview review-item-2 thumbnail col-sm-6 col-md-4">
               <img src="img/smiling2-by-Christopher-Connell-600x400.jpg" alt="Customer Photo2">
               <div class="caption">
                 <blockquote class="description"><p>Lorem ipsum dolor sit amet</p></blockquote>
                 <p class="reviewer">Smiling Customers2</p>
               </div><!-- /.caption -->
             </div><!-- /.hreview -->
-            <div class="hreview review-item-3 thumbnail">
+            <div class="hreview review-item-3 thumbnail col-sm-6 col-md-4">
               <img src="img/smiling3-by-BerkDDemir-600x900.jpg" alt="Customer Photo3">
               <div class="caption">
                 <blockquote class="description"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod, nulla</p></blockquote>
                 <p class="reviewer">Smiling Customer3</p>
               </div><!-- /.caption -->
             </div><!-- /.hreview -->
-            <div class="hreview review-item-4 thumbnail">
+            <div class="hreview review-item-4 thumbnail col-sm-6 col-md-4">
               <img src="img/smiling4-by-Trung-Hieu-600x400.jpg" alt="Customer Photo4">
               <div class="caption">
                 <blockquote class="description"><p>Lorem ipsum dolor sit amet</p></blockquote>
                 <p class="reviewer">Smiling Customer4</p>
               </div><!-- /.caption -->
             </div><!-- /.hreview -->
-            <div class="hreview review-item-5 thumbnail">
+            <div class="hreview review-item-5 thumbnail col-sm-6 col-md-4">
               <img src="img/smiling5-by-Ali-Burcin-Titizel-600x900.jpg" alt="Customer Photo5">
               <div class="caption">
                 <blockquote class="description"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod, nulla pretium commodo ultricies</p></blockquote>
                 <p class="reviewer">Smiling Customer5</p>
               </div><!-- /.caption -->
             </div><!-- /.hreview -->
-            <div class="hreview review-item-6 thumbnail">
+            <div class="hreview review-item-6 thumbnail col-sm-6 col-md-4">
               <img src="img/smiling6-by-Keith-Williamson-600x400.jpg" alt="Customer Photo6">
               <div class="caption">
                 <blockquote class="description"><p>Lorem ipsum dolor sit amet elit.</p></blockquote>
                 <p class="reviewer">Smiling Customer6</p>
               </div><!-- /.caption -->
             </div><!-- /.hreview -->
-            <div class="hreview review-item-7 thumbnail">
+            <div class="hreview review-item-7 thumbnail col-sm-6 col-md-4">
               <img src="img/smiling7-by-Victor1558-600x400.jpg" alt="Customer Photo7">
               <div class="caption">
                 <blockquote class="description"><p>Lorem ipsum dolor sit amet ... elit.</p></blockquote>
@@ -167,7 +169,7 @@
                 <tr>
                   <th colspan="2">
                     <h2>Basic Plan</h2>
-                    <div class="price">$19</div>
+                    <div class="price"><span>$</span>19</div>
                   </th>
                 </tr>
               </thead>
@@ -189,7 +191,7 @@
                 <tr>
                   <th colspan="2">
                     <h2>Premium Plan</h2>
-                    <div class="price">$29</div>
+                    <div class="price"><span>$</span>29</div>
                   </th>
                 </tr>
               </thead>
@@ -211,7 +213,7 @@
                 <tr>
                   <th colspan="2">
                     <h2>Pro Plan</h2>
-                    <div class="price">$39</div>
+                    <div class="price"><span>$</span>39</div>
                   </th>
                 </tr>
               </thead>

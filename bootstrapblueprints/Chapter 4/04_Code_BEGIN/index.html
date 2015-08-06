@@ -30,6 +30,25 @@
         <![endif]-->
 
         <header role="banner">
+            <div class="container">
+              <a class="banner-brand visible-md visible-lg" href="index.html"><img src="img/logo.png" alt="Bootstrappin'" width="180"></a>
+              <div class="utility-nav">
+                <ul>
+                  <li>
+                    <a href="#" title="Login or Register">
+                      <i class="icon fa fa-user fa-lg"></i>
+                      <span>Log In or Register</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" title="View Cart">
+                      <i class="icon fa fa-shopping-cart fa-lg"></i>
+                      <span>View Cart</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <nav role="navigation" class="navbar navbar-default">
               <div class="container">
                 <div class="navbar-header">
@@ -38,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Bootstrappin'" width="120"></a>
+                  <a class="navbar-brand visible-xs visible-sm" href="index.html"><img src="img/logo.png" alt="Bootstrappin'" width="120"></a>
                 </div>
                 <div class="navbar-collapse collapse">
                   <ul class="nav navbar-nav">
@@ -114,6 +133,8 @@
                           <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">All Departments <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -135,7 +156,7 @@
         <main role="main">
             <div class="container">
             <div class="row">
-                <section class="content-primary col-sm-4">
+                <section class="content-primary col-md-5">
                     <div id="homepage-feature" class="carousel slide">
                         <ol class="carousel-indicators">
                             <li data-target="#homepage-feature" data-slide-to="0" class="active"></li>
@@ -169,10 +190,10 @@
 
                     <h2>Featured Content</h2>
                     <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget.</p>
-                    <p><a class="btn btn-primary pull-right" href="#">Learn more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                    <p><a class="btn btn-feature btn-lg pull-right" href="#">Learn more <span class="icon fa fa-arrow-circle-right"></span></a></p>
 
                 </section>
-                <section class="content-secondary col-sm-4">
+                <section class="content-secondary col-md-4">
 
                     <h3>Welcome!</h3>
                     <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
@@ -187,16 +208,16 @@
                     <p><a class="btn btn-primary pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
 
                 </section>
-                <section class="content-tertiary col-sm-4">
+                <section class="content-tertiary col-md-3">
                     <h4>Don't Miss!</h4>
                     <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-                    <p><a class="btn btn-primary pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                    <p><a class="btn btn-default btn-xs pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
                     <h4>Check it out</h4>
                     <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-                    <p><a class="btn btn-primary pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                    <p><a class="btn btn-default btn-xs pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
                     <h4>Finally</h4>
                     <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-                    <p><a class="btn btn-primary pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                    <p><a class="btn btn-default btn-xs pull-right" href="#">Read more <span class="icon fa fa-arrow-circle-right"></span></a></p>
                 </div>
             </div><!-- /.row -->
             </div><!-- /.container -->
@@ -206,7 +227,49 @@
           <div class="container">
 
             <!-- INSERT ADDITIONAL FOOTER CONTENT HERE -->
-
+            <div class="row">
+            <div class="col-md-2 col-sm-4">
+              <h3>Categories</h3>
+                <ul>
+                  <li><a href="#">Shoes</a></li>
+                  <li><a href="#">Clothing</a></li>
+                  <li><a href="#">Accessories</a></li>
+                  <li><a href="#">Men</a></li>
+                  <li><a href="#">Women</a></li>
+                  <li><a href="#">Kids</a></li>
+                  <li><a href="#">Pets</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-4">
+              <h3>Styles</h3>
+                <ul>
+                  <li><a href="#">Athletic</a>  </li>
+                  <li><a href="#">Casual</a></li>
+                  <li><a href="#">Dress</a></li>
+                  <li><a href="#">Everyday</a></li>
+                  <li><a href="#">Other Days</a></li>
+                  <li><a href="#">Alternative</a></li>
+                  <li><a href="#">Otherwise</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-4">
+              <h3>Other</h3>
+                <ul>
+                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Another link</a></li>
+                  <li><a href="#">Link again</a></li>
+                  <li><a href="#">Try this</a></li>
+                  <li><a href="#">Don't you dare</a></li>
+                  <li><a href="#">Oh go ahead</a></li>
+                </ul>
+            </div>
+            <div class="clearfix visible-sm"></div>
+            <div class="about-col-md-6 col-sm-12">
+              <h3>About Us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod congue bibendum. Aliquam erat volutpat. Phasellus eget justo lacus. Vivamus pharetra ullamcorper massa, nec ultricies metus gravida egestas. Duis congue viverra arcu, ac aliquet turpis rutrum a. Donec semper vestibulum dapibus. Integer et sollicitudin metus. Vivamus at nisi turpis. Phasellus vel tellus id felis cursus hendrerit.</p>
+                <a class="btn btn-default btn-xs pull-right" href="#">Learn more <span class="fa fa-circle-arrow-right"></span></a>
+            </div>
+            </div>
             <ul class="social">
               <li><a href="#" title="Facebook Page"><span class="icon fa fa-facebook"></span></a></li>
               <li><a href="#" title="Twitter Profile"><span class="icon fa fa-twitter"></span></a></li>

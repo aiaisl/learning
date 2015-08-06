@@ -20,11 +20,12 @@
 // Brand colors
 // -------------------------
 
-@brand-primary:         #428bca;
+@brand-primary:         #3e7dbd;
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 @brand-info:            #5bc0de;
+@brand-feature: 		#c60004;
 
 // Scaffolding
 // -------------------------
@@ -36,7 +37,7 @@
 // -------------------------
 
 @link-color:            @brand-primary;
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      lighten(@link-color, 15%);
 
 // Typography
 // -------------------------
@@ -47,8 +48,8 @@
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
-@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
-@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+@font-size-large:         ceil(@font-size-base * 1.15); // ~18px
+@font-size-small:         ceil(@font-size-base * 0.90); // ~12px
 
 @font-size-h1:            floor(@font-size-base * 2.6); // ~36px
 @font-size-h2:            floor(@font-size-base * 2.15); // ~30px
@@ -118,13 +119,17 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              #333;
-@btn-default-bg:                 #fff;
-@btn-default-border:             #ccc;
+@btn-default-color:              @gray;
+@btn-default-bg:                 @gray-lightest;
+@btn-default-border:             darken(@btn-default-bg, 5%);
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
+
+@btn-feature-color:              #fff; // added
+@btn-feature-bg:                 @brand-feature; // added
+@btn-feature-border:             darken(@btn-feature-bg, 5%); // added
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
@@ -256,22 +261,22 @@
 // -------------------------
 
 // Basics of a navbar
-@navbar-height:                    50px;
+@navbar-height:                    44px;
 @navbar-margin-bottom:             @line-height-computed;
-@navbar-border-radius:             @border-radius-base;
+@navbar-border-radius:             0;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
-@navbar-default-color:             @gray;
+@navbar-default-color:             @text-color;
 @navbar-default-bg:                #fff;
 @navbar-default-border:            @gray-lighter; // darken(@navbar-default-bg, 9.5%);
 
 // Navbar links
 @navbar-default-link-color:                @navbar-default-color;
-@navbar-default-link-hover-color:          @link-hover-color;
-@navbar-default-link-hover-bg:             @off-white;
-@navbar-default-link-active-color:         @link-hover-color;
-@navbar-default-link-active-bg:            @gray-lightest;
+@navbar-default-link-hover-color:          @navbar-default-color;
+@navbar-default-link-hover-bg:             darken(@navbar-default-bg, 5%);
+@navbar-default-link-active-color:         @navbar-default-color;
+@navbar-default-link-active-bg:            @navbar-default-link-hover-bg;
 @navbar-default-link-disabled-color:       @gray-lighter;
 @navbar-default-link-disabled-bg:          transparent;
 
@@ -281,22 +286,22 @@
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
-@navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #ccc;
-@navbar-default-toggle-border-color:       #ddd;
+@navbar-default-toggle-hover-bg:           #transparent;
+@navbar-default-toggle-icon-bar-bg:        @gray;
+@navbar-default-toggle-border-color:       transparent;
 
 
 // Inverted navbar
 //
 // Reset inverted navbar basics
-@navbar-inverse-color:                      @gray-light;
-@navbar-inverse-bg:                         #222;
+@navbar-inverse-color:                      @gray-lightest;
+@navbar-inverse-bg:                         @brand-primary;
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 @gray-light;
+@navbar-inverse-link-color:                 @navbar-inverse-color;
 @navbar-inverse-link-hover-color:           #fff;
-@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-hover-bg:               darken(@navbar-inverse-bg, 5%);
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
 @navbar-inverse-link-disabled-color:        #444;

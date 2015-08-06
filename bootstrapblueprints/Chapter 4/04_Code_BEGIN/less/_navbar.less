@@ -176,8 +176,8 @@
 
 .navbar-toggle {
   position: relative;
-  float: right;
-  margin-right: @navbar-padding-horizontal;
+  float: left; // edited
+  margin-left: @navbar-padding-horizontal; // edited
   padding: 9px 10px;
   .navbar-vertical-align(34px);
   background-color: transparent;
@@ -215,7 +215,7 @@
     line-height: @line-height-computed;
   }
 
-  @media (max-width: @screen-xs-max) {
+  @media (max-width: @grid-float-breakpoint) {
     // Dropdowns get custom display when collapsed
     .open .dropdown-menu {
       position: static;

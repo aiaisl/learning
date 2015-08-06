@@ -1,0 +1,128 @@
+.pagination-wrap{
+	text-align: center;
+}
+.product-item {
+	padding-bottom: 32px;
+	height: 360px;
+	overflow: hidden;
+	img{
+		width: 100%;
+	}
+	h2{
+		font-size: @font-size-large;
+		line-height: 1.2;
+		padding: 0 !important;
+		margin-top: 6px;
+		margin-bottom: 2px;
+	}
+	p{
+		font-size: @font-size-small;
+		line-height: 1.3;
+		color: @gray;
+	}
+}
+
+@media (max-width:@screen-xs-max) and (min-width:@screen-xs-min) {
+	.products-grid{
+		max-width: 480px;
+		.center-block();
+	}
+}
+
+.grid-options{
+	.panel;
+	.panel-default;
+	padding-top: 12px;
+	padding-bottom: 24px;
+	max-width: 480px;
+	.center-block();
+	> h2 {
+		margin-top: 0;
+		font-size: 1.5 * (@font-size-large);
+		line-height: 1.2;
+		color: @gray-dark;
+		overflow: hidden;
+	}
+	> h3 {
+		font-size: @font-size-large;
+		line-height: 1.2;
+		margin-top: 12px;
+		color: @gray-dark;
+	}
+
+	.options-list{
+		list-style-type: none;
+		padding-left: 0;
+		.make-row();
+		li{
+			.make-xs-column(6);
+			@media screen and (max-width: @screen-xs-max) {
+				.make-xs-column(4);
+			}
+			a{
+				.btn;
+				.btn-sm;
+				padding-left: 0;
+				padding-right: 0;
+				color: @gray;
+				&:hover,
+				&:focus,
+				&:active,
+				.active & {
+					color: @link-color;
+				}
+				&:hover:before,
+				&:focus:before,
+				&:active:before,
+				.active &:before {
+					content: @fa-var-check-square-o;
+				}
+				&:before{
+					content: @fa-var-square-o;
+					width: (18em / 14);
+					text-align: center;
+					display: inline-block;
+					font-family: FontAwesome;
+					font-style: normal;
+					font-weight: normal;
+					line-height: 1;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale; 
+				}
+			}
+		}
+	}
+}
+
+.choose-clearance {
+	.center-block();
+	width: 92.5%;
+	padding-top: 20px;
+	padding-bottom: 12px;
+	white-space: normal;
+	position: relative;
+	h3{
+		font-weight: normal;
+		color: #fff;
+		padding-top: 4px;
+		margin: 6px;
+	}
+	p{
+		margin: 6px 20px;
+		line-height: 1.2;
+	}
+	.icon {
+		position: absolute;
+		top: 0;
+		right: 2px;
+	}
+}
+
+@media (min-width: @screen-sm-min) {
+	.options-panel {
+		display: block;
+	}
+	.options-panel-toggle {
+		display: none;
+	}
+}

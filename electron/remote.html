@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Remote</title>
+	<script type="text/javascript">
+	(function inTorModule() {
+		var remote = require('remote');
+		var BrowserWindow = remote.require('browser-window');
+		var win = new BrowserWindow({ width: 800, height: 600 });
+		win.loadUrl('http://electron.atom.io');
+	})();
+	</script>
+</head>
+<body>
+	<h1>Remote</h1>
+	<a href="index.html" class="backHome">返回主页</a>
+</body>
+</html>

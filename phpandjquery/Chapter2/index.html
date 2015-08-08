@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用jQuery和PHP</title>
+		<style type="text/css">
+		p
+		{
+			width:343px;
+			border:1px solid black;
+		}
+		</style>
+	<script type="text/javascript" src="../../resources/jquery.js"></script>
+</head>
+<body>
+		<p id="container">
+			Try clicking on any of the last 3 buttons. They will do nothing until the script is loaded.
+		</p>
+		<input type="button" class="loader" value="Load Script"/>
+		<input type="button" class="bold" value="Bold"/>
+		<input type="button" class="color" value="Change color"/>
+		<input type="button" class="change" value="Change text"/>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		//$('input:button:first').click(function(aaa){
+		//	$.getScript('Recipe8/new.js', function(){
+		//		alert('Script loaded');
+		//		addEvents();
+		//	})
+		//})
+	$.ajax({
+		url: 'new.js',
+		dataType: 'script',
+		success: function()
+		{
+			alert('Script loaded');
+			addEvents();
+		},
+		error: function()
+		{
+			alert('Error');
+		}
+	})
+	});
+	</script>
+</body>
+</html>

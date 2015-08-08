@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用jQuery处理事件</title>
+	<script type="text/javascript" src="../../resources/jquery.js"></script>
+</head>
+	<body>
+		<style type="text/css">
+			.dragMe
+			{
+				background-color:#8FBC8F;
+				border:1px solid black;
+				color: #fff;
+				float:left;
+				font-family:verdana,arial;
+				font-size:14px;
+				font-weight:bold;
+				height:100px;
+				margin:10px;
+				text-align:center;
+				width:100px;
+			}
+		</style>
+		<div class="dragMe">Drag Me</div>
+		
+		<div class="dragMe">Drag Me too</div>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		var mouseX = 0,
+			mouseY = 0,
+			divLeft,
+			divTop;
+		$('.dragMe').mousedown(function(event) {
+			var offset = $(this).offset();
+			divLeft = parseInt(offset.left, 10);
+			divTop = parseInt(offset.top, 10);
+			mouseX = event.pageX;
+			mouseY = event.pageY;
+			$(this).bind('mousemove', dragElement);
+		});
+
+		function dragElement(event) {
+			var left = divLeft + (event.pageX - mouseX);
+			var top = divTop + (event.pageY - mouseY);
+			$(this).css({
+				'top' : top + 'px',
+				'left' : left + 'px',
+				'position' : 'absolute'
+			});
+			return false;
+		}
+
+		$(document).mouseup(function(){
+			$('.dragMe').unbind('mousemove');
+		})
+	});
+	</script>
+</body>
+</html>

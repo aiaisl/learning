@@ -1,5 +1,5 @@
-var path = require('path');
 var Nightmare = require('nightmare');
+<<<<<<< HEAD
 var should = require('chai').should();
 describe('Nightmare demo', function () {
     this.timeout(15000); // Set timeout to 15 seconds, instead of the original 2 seconds
@@ -21,4 +21,24 @@ describe('Nightmare demo', function () {
                 })
                 .run();
         });
+=======
+var expect = require('chai').expect; // jshint ignore:line
+
+describe('test yahoo search results', function() {
+  this.timeout(30000);
+
+  it('should find the nightmare github link first', function(done) {
+    new Nightmare()
+      .goto('http://yahoo.com')
+        .type('input[title="Search"]', 'github nightmare')
+        .click('.searchsubmit')
+        .wait('.url.breadcrumb')
+        .evaluate(function () {
+          return document.querySelector('.url.breadcrumb').innerText;
+        }, function (breadcrumb) {
+          expect(breadcrumb).to.equal('github.com');
+        })
+        .run(done);
+  });
+>>>>>>> 356ff2f93527f8c4f2774fb91b7e9ee7f2d3b30a
 });

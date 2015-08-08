@@ -4,14 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Remote</title>
 	<script type="text/javascript">
+	var remote = require('remote');
 	function reload() {
-		var remote = require('remote');
 		remote.getCurrentWindow().reload();
 	}
 	window.onload = function(){
 		document.getElementById('reload').addEventListener('click', function(){
 			reload();
 		});
+		var cotnent = remote.getCurrentWebContents();
+		console.log(cotnent.getTitle());
 	}
 	</script>
 </head>

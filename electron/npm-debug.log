@@ -1,0 +1,33 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   'C:\\Users\\lsw\\AppData\\Roaming\\npm\\node_modules\\cnpm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   '--userconfig=C:\\Users\\lsw\\.cnpmrc',
+1 verbose cli   '--disturl=https://npm.taobao.org/mirrors/node',
+1 verbose cli   '--cache=C:\\Users\\lsw\\.cnpm',
+1 verbose cli   '--registry=https://registry.npm.taobao.org',
+1 verbose cli   '--node-gyp=C:\\Users\\lsw\\AppData\\Roaming\\npm\\node_modules\\cnpm\\node_modules\\pangyp\\bin\\node-gyp.js',
+1 verbose cli   'install',
+1 verbose cli   'angular-route' ]
+2 info using npm@2.13.2
+3 info using node@v0.10.31
+4 verbose install initial load of E:\server\learning\electron\package.json
+5 verbose stack Error: Invalid name: "练习"
+5 verbose stack     at ensureValidName (C:\Users\lsw\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\node_modules\normalize-package-data\lib\fixer.js:331:15)
+5 verbose stack     at Object.module.exports.fixNameField (C:\Users\lsw\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\node_modules\normalize-package-data\lib\fixer.js:210:5)
+5 verbose stack     at C:\Users\lsw\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\node_modules\normalize-package-data\lib\normalize.js:32:38
+5 verbose stack     at Array.forEach (native)
+5 verbose stack     at normalize (C:\Users\lsw\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\node_modules\normalize-package-data\lib\normalize.js:31:15)
+5 verbose stack     at final (C:\Users\lsw\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\node_modules\read-package-json\read-json.js:338:5)
+5 verbose stack     at then (C:\Users\lsw\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\node_modules\read-package-json\read-json.js:113:5)
+5 verbose stack     at C:\Users\lsw\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\node_modules\read-package-json\read-json.js:284:20
+5 verbose stack     at evalmachine.<anonymous>:207:20
+5 verbose stack     at OpenReq.Req.done (C:\Users\lsw\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\node_modules\read-package-json\node_modules\graceful-fs\graceful-fs.js:141:5)
+6 verbose cwd E:\server\learning\electron
+7 error Windows_NT 6.2.9200
+8 error argv "node" "C:\\Users\\lsw\\AppData\\Roaming\\npm\\node_modules\\cnpm\\node_modules\\npm\\bin\\npm-cli.js" "--userconfig=C:\\Users\\lsw\\.cnpmrc" "--disturl=https://npm.taobao.org/mirrors/node" "--cache=C:\\Users\\lsw\\.cnpm" "--registry=https://registry.npm.taobao.org" "--node-gyp=C:\\Users\\lsw\\AppData\\Roaming\\npm\\node_modules\\cnpm\\node_modules\\pangyp\\bin\\node-gyp.js" "install" "angular-route"
+9 error node v0.10.31
+10 error npm  v2.13.2
+11 error Invalid name: "练习"
+12 error If you need help, you may report this error at:
+12 error     <https://github.com/npm/npm/issues>
+13 verbose exit [ 1, true ]

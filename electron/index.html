@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="electron">
   <head>
-    <title>Hello World!</title>
-<script>
-var remote = require('remote');
-var BrowserWindow = remote.require('browser-window');
-var win = new BrowserWindow({ width: 800, height: 600 });
-win.loadUrl('https://www.baidu.com');
-</script>
+    <title>index</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="assets/js/angular.js"></script>
+    <script type="text/javascript" src="assets/js/angular-route.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/route.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using io.js <script>document.write(process.version)</script>
-    and Electron <script>document.write(process.versions['electron'])</script>.
+  <body ng-controller="MainController">
+    <div class="header">
+      <h1 ng-bind="pageTitle"></h1>
+      <a href="javascript:;" id="reload">刷新当前页面</a>
+    </div>
+    <div class="sidebar">
+      <dl>
+        <dd><a href="#/">主页</a></dd>
+        <dd><a href="#/Menu">菜单</a></dd>
+        <dd><a href="#/Dialog">Dialog</a></dd>
+        <dd><a href="#/Tray">Tray</a></dd>
+      </dl>
+    </div>
+  	<div class="main" ng-view></div>
   </body>
 </html>

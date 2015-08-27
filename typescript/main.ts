@@ -1,7 +1,18 @@
-/// <reference path="typings/node/node.d.ts" />
+function add(x: number, y:number) : number {
+	return x + y;
+}
 
-import url = require("url");
-import fs = require("fs");
+var myAdd = function(x: number, y:number) :number {
+	return x + y;
+}
 
 
-var myUrl = url.parse("http://www.typescriptlang.org");
+var myAdd = function(x: number, y:number):number{
+	return x+ y;
+}
+
+var myAdd: (vaseValue: number, increment: number)=>number = 
+	function(x, y) {
+		return x + y;
+	}
+myAdd()

@@ -1,3 +1,6 @@
-/// <reference path="typings/node/node.d.ts" />
-var url = require("url");
-var myUrl = url.parse("http://www.typescriptlang.org");
+function add(x, y) {
+    return x + y;
+}
+var myAdd = function (x, y) {
+    return x + y;
+};

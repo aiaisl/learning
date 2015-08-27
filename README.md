@@ -1,2 +1,2 @@
 # jjcjc
-练习jQuery技巧的git项目
+练习技巧的git项目

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "declaration": false,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "module": "commonjs"
+  },
+  "files": [
+    "node/start-end/index.ts"
+  ]
+}

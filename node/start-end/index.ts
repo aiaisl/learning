@@ -1,24 +1,33 @@
 /// <reference path="../../typings/node/node.d.ts" />
 /// <reference path="../../typings/q/q.d.ts" />
 
-import fs = require("fs");
-import q = require("q");
+import http = require("http");
+import url = require("url");
 
-var fsReadFile_deferd = function(file:string, encoding?: string):q.Promise<{}> {
-	var deferred = q.defer();
-	fs.readFile(file, encoding, function(error, result){
-		if(error) {
-			deferred.reject(error.toString());
-		}
-		deferred.resolve(result);
-	});
-	return deferred.promise;
-}
+http.createServer(function(req, res){
+	var pathname = url.parse(req.url).pathname;
+	
+	if(pathname === '/') {
+		res.writeHead(200, {
+			'Content-Type' : 'text/plain'
+		});
+		res.end("Home Page\n");
+	} else if(pathname === "/about") {
+		res.writeHead(200, {
+			'Content-Type' : 'text/plain'
+		});
+		res.end("About Us\n");
+	} else if(pathname === "/redirect") {
+		res.writeHead(301, {
+			'Location' : '/'
+		});
+		res.end();
+	} else {
+		res.writeHead(301, {
+			'Content-Type' : 'text/plain'
+		});
+		res.end("Page not found\n");
+	}
+}).listen(3000, "127.0.0.1");
 
-fsReadFile_deferd('./index.js').then(function(result){
-	console.log("invoke in deferd");
-	console.log(result.toString());
-}, function(error){
-	console.log("invoke in deferd");
-	console.log(error.toString());
-});
+console.log("Server running at http://127.0.0.1:3000/");

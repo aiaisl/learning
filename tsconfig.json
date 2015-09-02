@@ -8,6 +8,10 @@
     "module": "commonjs"
   },
   "files": [
-    "node/start-end/index.ts"
+    "node/start-end/index.ts",
+    "node/start-end/express/app",
+    "node/start-end/express/routes/index",
+    "node/start-end/express/public/js/main",
+    "node/start-end/database"
   ]
 }

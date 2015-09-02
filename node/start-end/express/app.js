@@ -1,35 +1,21 @@
-
-/**
- * Module dependencies.
- */
-
-var express = require('express')
-  , routes = require('./routes')
-
-var app = module.exports = express.createServer();
-
-// Configuration
-
-app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+/// <reference path="../../../typings/node/node.d.ts" />
+/// <reference path="../../../typings/express/express.d.ts" />
+var express = require('express');
+var app = express();
+app.set('view engine', 'html');
+app.get('/', function (req, res) {
+    res.sendfile('./public/index.html');
 });
-
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+app.post('/', function (req, res) {
+    res.send("POSTｒｅｑｕｅｓｔ　ｔｏ　ｔｈｅ　ｈｏｍｅｐａｇｅ");
 });
-
-app.configure('production', function(){
-  app.use(express.errorHandler()); 
+app.all('/secret', function (req, res, next) {
+    console.log('Accessing the secret section ...');
+    next();
 });
-
-// Routes
-
-app.get('/', routes.index);
-
-app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+app.use(express.static('public'));
+var server = app.listen(3000, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log("Example app listening at http://" + host + ":" + port);
+});

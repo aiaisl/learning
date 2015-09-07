@@ -1,20 +1,44 @@
 var audio:HTMLAudioElement = document.createElement("audio");
-
+import fs = require("fs");
 export interface Voice{
   src: string;
   name: string;
   index: number;
 }
+audio.paused
 
 export class Playlist{
+  private control:Control;
+  private voices: Array<Voice>;
+  public currentVoiceIndex: number;
   constructor(control: Control, voices: Array<Voice>){
-    control.startPlay(voices[5]);
+    this.control = control;
+    this.voices = voices;
+    var index:number = parseFloat(fs.readFileSync(path.join(__dirname, "123"),"utf8"));
+    var t:number = parseFloat(fs.readFileSync(path.join(__dirname, "pro"),"utf8"));
+    if(index){
+       this.startPlay(index);
+       console.log(t);
+       
+       this.control.currentTime = t;
+    } else{
+      this.startPlay(10);
+    }
+    audio.onended = (ev)=>{
+      this.next();
+      
+    }
   }
   next(){
-    
+    this.startPlay(++this.currentVoiceIndex)
   }
   prev(){
-    
+    this.startPlay(--this.currentVoiceIndex)
+  }
+  
+  startPlay(index:number){
+    this.currentVoiceIndex = index;
+    this.control.startPlay(this.voices[index]);
   }
 }
 
@@ -45,22 +69,26 @@ export class Control{
   }
   
   get progress(){
-    return Math.floor(this.audio.currentTime/this.audio.duration * 10000)/100;
+    return Math.floor(audio.currentTime/audio.duration * 10000)/100;
   }
   
   set progress(setTime){
-    this.audio.currentTime = setTime * this.audio.duration;
+    audio.currentTime = setTime * audio.duration;
   }
   
   get currentTime(){
-    return this.audio.currentTime;
+    return audio.currentTime;
   }
   set currentTime(setTime){
-    this.audio.currentTime = setTime;
+    audio.currentTime = setTime;
   }
   
   get song(){
-    return this.audio;
+    return audio;
+  }
+  
+  get paused():boolean{
+    return audio.paused;
   }
 }
 

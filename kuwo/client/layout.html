@@ -10,14 +10,93 @@
     <link rel="stylesheet" href="css/dialog/ngDialog-theme-default.css">
     <link rel="stylesheet" href="css/dialog/ngDialog-theme-plain.css">
     <link rel="stylesheet" href="css/dialog/ngDialog-custom-width.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-controller="MainController">
-    <a href="#" ng-click="login()">登陆</a>
-	<a href="#/lyric">歌词</a>
-	<a href="#/songs">曲库</a>
-	<a href="#/live">直播</a>
-	<a href="#/download">下载</a>
-	<div ng-view></div>
-    <script src="app.js"></script>
+	<div style="display:none">
+		<div class="loader-pic" ng-class="{loading: loader, loaded: !loader}">
+			<img src="images/top.jpg">
+		</div>
+	</div>
+	<div class="main-header">
+		<div class="login" ng-click="login()">
+			<div class="logo">
+				<img src="images/logo.png" alt="">
+			</div>
+			点击登陆
+		</div>
+		<div class="menu">
+			<ul>
+				<li><a href="#/lyric">歌词MV</a></li>
+				<li><a href="#/songs">曲库</a></li>
+				<li><a href="#/live">直播</a></li>
+				<li><a href="#/download">下载</a></li>
+			</ul>
+		</div>
+		<div class="search">
+			<input type="text" placeholder="张学友">
+		</div>
+		<div class="game">游戏</div>
+		<div class="tools-top">
+			<a href="#"><i class="fa fa-tree"></i></a>
+			<a href="#" alt="贴边迷你模式"></a>
+			<a href="#"><i class="fa fa-street-view"></i></a>
+			<a href="#"><i class="fa fa-gear"></i></a>
+			<a href="#"><i class="fa fa-minus"></i></a>
+			<a href="#" alt="最大化"></a>
+			<a href="#"><i class="fa fa-close"></i></a>
+		</div>
+	</div>
+	<div class="main-content">
+		<div ng-view></div>
+	</div>
+	<div class="main-list">
+		<div class="list-header">
+			<a href="#"><i class="fa fa-plus"></i>添加</a>
+			<a href="#"><i class="fa fa-trash"></i>整理</a>
+			<a href="#"><i class="fa fa-search"></i>查找</a>
+			<a href="#"><i class="fa fa-cloud-upload"></i>同步</a>
+		</div>
+		<div class="list-content">
+			<dl class="list-title">
+				<dt><a href="#">创建列表</a></dt>
+				<dd ng-click="sayhi(key)" ng-repeat="(key, value) in songList"><a href="#">{{value.title}}</a></dd>
+			</dl>
+			<ul class="list-songs">
+				<li data-ng-repeat="(index, val) in voices" ng-class="{on: currentPlayMusicIndex == index}">
+					<a href="javascript:;" ng-click="startPlay(index)" ng-bind="val.name"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="main-footer">
+		<div class="lin" id="lin" ng-click="jump(event)">
+		<div class="redlin" id="redlin"></div>
+		</div>
+		<div class="song-message">
+			<a href="#" class="song-pictrue">
+				<img src="" alt="">
+			</a>
+			<a href="#" class="song-title"></a>
+			<span song-time>01:23|04:0.</span>
+			<a href="#" class="like"></a>
+			<a href="#" class="download"></a>
+			<a href="#" class="ktv"></a>
+			<a href="#" class="share"></a>
+		</div>
+		<div class="music-controller">
+			<a href="javascript:;" ng-click="prev()" class="backward fa fa-step-backward"></a>
+			<a href="javascript:;" ng-click="play()" ng-show="paused" class="play fa fa-play"></a>
+			<a href="javascript:;" ng-click="pause()" ng-show="!paused" class="pause fa fa-pause"></a>
+			<a href="javascript:;" ng-click="next()" class="forward fa fa-step-forward"></a>
+			<a href="javascript:;" class="volume fa fa-volume-down"></a>
+		</div>
+		<div class="tools-bottom">
+			<a href="javascript:;">循环</a>
+			<a href="javascript:;">桌面歌词</a>
+			<a href="javascript:;">工具</a>
+		</div>
+	</div>
+	<script src="app.js"></script>
 </body>
 </html>

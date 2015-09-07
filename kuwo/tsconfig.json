@@ -1,14 +1,29 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "declaration": false,
-    "noImplicitAny": true,
-    "removeComments": true,
-    "sourceMap": false,
-    "module": "commonjs"
-  },
-  "filesGlob": [
-    "./**/*.ts",
-    "!node_modules/**/*.ts"
-   ]
+    "compilerOptions": {
+        "target": "es5",
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "sourceMap": false,
+        "module": "commonjs"
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!node_modules/**/*.ts"
+    ],
+    "files": [
+        "./client/geci.ts",
+        "./client/index.ts",
+        "./client/kuwo.ts",
+        "./client/main.ts",
+        "./client/player.ts",
+        "./typings/angularjs/angular.d.ts",
+        "./typings/electron/electron.d.ts",
+        "./typings/github-electron/github-electron-main.d.ts",
+        "./typings/github-electron/github-electron.d.ts",
+        "./typings/jquery/jquery.d.ts",
+        "./typings/mocha/mocha.d.ts",
+        "./typings/node/node.d.ts",
+        "./typings/q/q.d.ts"
+    ]
 }

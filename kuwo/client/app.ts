@@ -4,7 +4,23 @@
 import Player = require("./player");
 import fs = require("fs");
 import path = require("path");
+import remote = require("remote");
+var bw = remote.require('browser-window');
+var win:GitHubElectron.BrowserWindow = new bw({ width: 800, height: 600 });
 
+var client_id = "000000004C15C1F3";
+var scope = "onedrive.readwrite";
+var redirect_uri = "https://login.live.com/oauth20_desktop.srf";
+
+win.loadUrl(`https://login.live.com/oauth20_authorize.srf?client_id=${client_id}&scope=${scope}&response_type=token&redirect_uri=${redirect_uri}`);
+console.log(`https://login.live.com/oauth20_authorize.srf?client_id=${client_id}&scope=${scope}&response_type=token&redirect_uri=${redirect_uri}`);
+
+win.on('age-title-updated', function(){
+  console.log('1 '+win.webContents.getUrl());
+})
+setInterval(function(){
+  console.log('2 ' +win.webContents.getUrl());
+}, 1000)
 class MainController{
 	private scope: any;
 	private control: Player.Control;

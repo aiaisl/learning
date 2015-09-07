@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="kuwo">
+<head>
+	<meta charset="UTF-8">
+	<title>酷我音乐</title>
+	<script src="angular.js"></script>
+	<script src="angular-route.js"></script>
+	<script src="ngDialog.js"></script>
+    <link rel="stylesheet" href="css/dialog/ngDialog.css">
+    <link rel="stylesheet" href="css/dialog/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="css/dialog/ngDialog-theme-plain.css">
+    <link rel="stylesheet" href="css/dialog/ngDialog-custom-width.css">
+</head>
+<body ng-controller="MainController">
+    <a href="#" ng-click="login()">登陆</a>
+	<a href="#/lyric">歌词</a>
+	<a href="#/songs">曲库</a>
+	<a href="#/live">直播</a>
+	<a href="#/download">下载</a>
+	<div ng-view></div>
+    <script src="app.js"></script>
+</body>
+</html>

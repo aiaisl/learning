@@ -1,14 +1,64 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "declaration": false,
-    "noImplicitAny": true,
-    "removeComments": true,
-    "sourceMap": false,
-    "module": "commonjs"
-  },
-  "filesGlob": [
-    "./**/*.ts",
-    "!node_modules/**/*.ts"
-   ]
+    "compilerOptions": {
+        "target": "es5",
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "sourceMap": false,
+        "module": "commonjs"
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "./*.ts",
+        "!node_modules/**/*.ts"
+    ],
+    "files": [
+        "./client/app.ts",
+        "./client/geci.ts",
+        "./client/index.ts",
+        "./client/kuwo.ts",
+        "./client/main.ts",
+        "./server/index.ts",
+        "./typings/angularjs/angular-amd-tests.ts",
+        "./typings/angularjs/angular-animate.d.ts",
+        "./typings/angularjs/angular-cookies.d.ts",
+        "./typings/angularjs/angular-mocks-tests.ts",
+        "./typings/angularjs/angular-mocks.d.ts",
+        "./typings/angularjs/angular-resource-tests.ts",
+        "./typings/angularjs/angular-resource.d.ts",
+        "./typings/angularjs/angular-route-tests.ts",
+        "./typings/angularjs/angular-route.d.ts",
+        "./typings/angularjs/angular-sanitize-tests.ts",
+        "./typings/angularjs/angular-sanitize.d.ts",
+        "./typings/angularjs/angular-tests.ts",
+        "./typings/angularjs/angular.d.ts",
+        "./typings/angularjs/legacy/angular-1.0-tests.ts",
+        "./typings/angularjs/legacy/angular-1.0.d.ts",
+        "./typings/angularjs/legacy/angular-1.2-tests.ts",
+        "./typings/angularjs/legacy/angular-1.2.d.ts",
+        "./typings/angularjs/legacy/angular-animate-1.2.d.ts",
+        "./typings/angularjs/legacy/angular-cookies-1.0.d.ts",
+        "./typings/angularjs/legacy/angular-cookies-1.2.d.ts",
+        "./typings/angularjs/legacy/angular-mocks-1.0.d.ts",
+        "./typings/angularjs/legacy/angular-mocks-1.2-tests.ts",
+        "./typings/angularjs/legacy/angular-mocks-1.2.d.ts",
+        "./typings/angularjs/legacy/angular-resource-1.0.d.ts",
+        "./typings/angularjs/legacy/angular-resource-1.2-tests.ts",
+        "./typings/angularjs/legacy/angular-resource-1.2.d.ts",
+        "./typings/angularjs/legacy/angular-route-1.2-tests.ts",
+        "./typings/angularjs/legacy/angular-route-1.2.d.ts",
+        "./typings/angularjs/legacy/angular-sanitize-1.0.d.ts",
+        "./typings/angularjs/legacy/angular-sanitize-1.2-tests.ts",
+        "./typings/angularjs/legacy/angular-sanitize-1.2.d.ts",
+        "./typings/angularjs/legacy/angular-scenario-1.0.d.ts",
+        "./typings/angularjs/legacy/angular-scenario-1.2.d.ts",
+        "./typings/electron/electron.d.ts",
+        "./typings/express/express.d.ts",
+        "./typings/github-electron/github-electron-main.d.ts",
+        "./typings/github-electron/github-electron.d.ts",
+        "./typings/jquery/jquery.d.ts",
+        "./typings/mocha/mocha.d.ts",
+        "./typings/node/node.d.ts",
+        "./typings/q/q.d.ts"
+    ]
 }

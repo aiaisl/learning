@@ -1,26 +1,104 @@
 /// <reference path="../typings/github-electron/github-electron.d.ts" />
 /// <reference path="../typings/github-electron/github-electron-main.d.ts" />
-/// <reference path="../typings/node/node.d.ts" />
-var Player = require("./player");
+/// <reference path="../typings/libs.d.ts" />
+var Player = require("./js/player");
+var Routes = require("./js/routes");
 var fs = require("fs");
 var path = require("path");
 var remote = require("remote");
-var bw = remote.require('browser-window');
-var win = new bw({ width: 800, height: 600 });
-var client_id = "000000004C15C1F3";
-var scope = "onedrive.readwrite";
-var redirect_uri = "https://login.live.com/oauth20_desktop.srf";
-win.loadUrl("https://login.live.com/oauth20_authorize.srf?client_id=" + client_id + "&scope=" + scope + "&response_type=token&redirect_uri=" + redirect_uri);
-console.log("https://login.live.com/oauth20_authorize.srf?client_id=" + client_id + "&scope=" + scope + "&response_type=token&redirect_uri=" + redirect_uri);
-win.on('age-title-updated', function () {
-    console.log('1 ' + win.webContents.getUrl());
+var IScroll = require('./js/lib/iscroll');
+var myScroll = new IScroll('.list-song-js-box', {
+    scrollbars: true,
+    mouseWheel: true,
+    interactiveScrollbars: true,
+    shrinkScrollbars: 'scale',
+    fadeScrollbars: true
 });
-setInterval(function () {
-    console.log('2 ' + win.webContents.getUrl());
-}, 1000);
+var Menu = remote.require('menu');
+var MenuItem = remote.require('menu-item');
+var dialog = remote.require("dialog");
+//var bw = remote.require('browser-window');
+//var win:GitHubElectron.BrowserWindow = new bw({ width: 800, height: 600 });
+//var client_id = "000000004C15C1F3";
+//var scope = "onedrive.readwrite";
+//var redirect_uri = "https://login.live.com/oauth20_desktop.srf";
+//
+//win.loadUrl(`https://login.live.com/oauth20_authorize.srf?client_id=${client_id}&scope=${scope}&response_type=token&redirect_uri=${redirect_uri}`);
+//console.log(`https://login.live.com/oauth20_authorize.srf?client_id=${client_id}&scope=${scope}&response_type=token&redirect_uri=${redirect_uri}`);
+//
+//win.on('did-get-redirect-request', function(){
+//  console.log('1 '+win.webContents.getUrl());
+//})
+//setInterval(function(){
+//  console.log('2 ' +win.webContents.getUrl());
+//}, 1000)
 var MainController = (function () {
     function MainController($scope, ngDialog) {
         var _this = this;
+        var loopMode = new Menu();
+        var resetChecked = function (item) {
+            loopMode.items.forEach(function (a, b) {
+                a.checked = false;
+            });
+            item.checked = true;
+        };
+        loopMode.append(new MenuItem({
+            label: '单曲播放',
+            type: 'checkbox',
+            click: function (item) {
+                resetChecked(item);
+                _this.playlist.switchMode = Player.SwitchMode.Single;
+            }
+        }));
+        loopMode.append(new MenuItem({
+            label: '单曲循环',
+            type: 'checkbox',
+            click: function (item) {
+                resetChecked(item);
+                _this.playlist.switchMode = Player.SwitchMode.SingleCycle;
+            }
+        }));
+        loopMode.append(new MenuItem({
+            label: '顺序播放',
+            type: 'checkbox',
+            click: function (item) {
+                resetChecked(item);
+                _this.playlist.switchMode = Player.SwitchMode.Order;
+            }
+        }));
+        loopMode.append(new MenuItem({
+            label: '循环播放',
+            type: 'checkbox',
+            click: function (item) {
+                resetChecked(item);
+                _this.playlist.switchMode = Player.SwitchMode.Cycle;
+            }
+        }));
+        loopMode.append(new MenuItem({
+            label: '随机播放',
+            type: 'checkbox',
+            click: function (item) {
+                resetChecked(item);
+                _this.playlist.switchMode = Player.SwitchMode.Random;
+            }
+        }));
+        loopMode.append(new MenuItem({
+            label: '单曲播放',
+            type: 'checkbox',
+            click: function (item) {
+                resetChecked(item);
+                _this.playlist.switchMode = Player.SwitchMode.Single;
+            }
+        }));
+        loopMode.append(new MenuItem({ type: 'separator' }));
+        loopMode.append(new MenuItem({
+            label: '自动切换列表',
+            enabled: false,
+            click: function () {
+                console.log('自动切换列表');
+            }
+        }));
+        this.loopMode = loopMode;
         this.scope = $scope;
         this.scope.login = function () {
             ngDialog.open({
@@ -28,7 +106,10 @@ var MainController = (function () {
                 controller: ["$scope", "s", LoginController]
             });
         };
-        var musicPath = path.join("C:\\Users\\lsw\\OneDrive\\音乐");
+        Player.playerEventMessage.on("change", function (s) {
+            _this.scope.currentPlayMusicIndex = s;
+        });
+        var musicPath = path.join("E:\\KwDownload\\song");
         this.scope = $scope;
         var __this = this;
         fs.readdir(musicPath, function (err, data) {
@@ -54,19 +135,7 @@ var MainController = (function () {
                     _this.scope.paused = paused;
                 });
                 _this.registerEvent();
-                window.onbeforeunload = function (e) {
-                    fs.writeFile(path.join(__dirname, "pro"), _this.control.currentTime, function () {
-                        console.log(1);
-                    });
-                    fs.writeFile(path.join(__dirname, "123"), _this.playlist.currentVoiceIndex, function () {
-                        console.log(1);
-                    });
-                    console.log('I do not want to be closed');
-                    // Unlike usual browsers, in which a string should be returned and the user is
-                    // prompted to confirm the page unload, Electron gives developers more options.
-                    // Returning empty string or false would prevent the unloading now.
-                    // You can also use the dialog API to let the user confirm closing the application.
-                };
+                myScroll.refresh();
             }
         });
     }
@@ -77,11 +146,17 @@ var MainController = (function () {
             scope.voices = _this.voices;
         });
     };
+    MainController.prototype.changeLoop = function () {
+        this.loopMode.popup(remote.getCurrentWindow());
+    };
     MainController.prototype.registerEvent = function () {
         var _this = this;
         var scope = this.scope;
+        scope.changeLoop = function () {
+            _this.changeLoop();
+        };
         scope.next = function () {
-            _this.playlist.next();
+            _this.playlist.next(true);
         };
         scope.prev = function () {
             _this.playlist.prev();
@@ -94,8 +169,19 @@ var MainController = (function () {
         scope.play = function () {
             _this.control.play();
         };
+        scope.addLocalMusic = function () {
+            addLocalMusicMenu.popup(remote.getCurrentWindow());
+        };
         scope.startPlay = function (index) {
             _this.playlist.startPlay(index);
+        };
+        window.onbeforeunload = function (e) {
+            fs.writeFile(path.join(__dirname, "pro"), _this.control.currentTime, function () {
+                console.log(1);
+            });
+            fs.writeFile(path.join(__dirname, "123"), _this.playlist.currentVoiceIndex, function () {
+                console.log(1);
+            });
         };
         var a = document.getElementById("redlin");
         var al = document.getElementById("lin").clientWidth;
@@ -133,26 +219,7 @@ var kuwo = angular.module('kuwo', ['ngRoute', 'ngDialog']);
 kuwo.controller("MainController", ["$scope", "ngDialog", MainController]);
 var MainConfig = (function () {
     function MainConfig($routeProvider) {
-        $routeProvider
-            .when('/live', {
-            templateUrl: 'template/live.html'
-        })
-            .when('/lyric', {
-            templateUrl: 'template/lyric.html'
-        })
-            .when('/songs', {
-            templateUrl: 'template/songs.html'
-        })
-            .when('/download', {
-            templateUrl: 'template/download.html'
-        })
-            .when('/player', {
-            templateUrl: 'template/player.html'
-        })
-            .when('/', {
-            templateUrl: 'template/songs.html'
-        })
-            .otherwise({ redirectTo: '/' });
+        var route = new Routes.Routes($routeProvider);
     }
     return MainConfig;
 })();
@@ -171,3 +238,19 @@ var S = (function () {
 })();
 kuwo.factory("s", ["$http", "$q", S]);
 kuwo.config(function ($routeProvider) { new MainConfig($routeProvider); });
+var addLocalMusicMenu = new Menu();
+addLocalMusicMenu.append(new MenuItem({ label: '自动扫描全盘音乐', click: function () {
+        console.log('自动扫描全盘音乐');
+    } }));
+addLocalMusicMenu.append(new MenuItem({ label: '添加本地歌曲文件', click: function () {
+        console.log('添加本地歌曲文件');
+        dialog.showOpenDialog({
+            title: "打开",
+            filters: [
+                { name: '所有音频文件', extensions: ['mp3', 'ogg', 'wma'] },
+            ],
+            properties: ["multiSelections"]
+        }, function (fileName) {
+            console.log(fileName);
+        });
+    } }));

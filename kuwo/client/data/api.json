@@ -1,0 +1,6 @@
+{
+	"client_id" : "000000004C15C1F3",
+	"scope" : "onedrive.readwrite",
+	"redirect_uri" : "https://login.live.com/oauth20_desktop.srf",
+	"secret": ""
+}

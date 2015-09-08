@@ -13,6 +13,7 @@ html, body{
 
 body{
 	background: url(../images/song-pictrue.jpg) no-repeat;
+	background-size: cover;
 }
 .main-footer{
 	position: absolute;
@@ -109,7 +110,7 @@ body{
 }
 
 .main-content{
-	width: 705px;
+	width: 70%;
 	float: left;
 	height: 500px;
 	.geci{
@@ -120,13 +121,14 @@ body{
 	}
 }
 .main-list{
-	width: 345px;
+	width: 30%;
 	float: right;
 	background: rgba(255, 255, 255, 0.8);
 	height: 500px;
 	color: #333;
 	a{
 		color: #333;
+		white-space: nowrap;
 	}
 	.list-header{
 		font-size: 1.2em;
@@ -151,9 +153,15 @@ body{
 			text-indent: 10px;
 		}
 	}
+	.list-content{
+		height: calc(500px-35px);
+	}
+	.list-song-js-box{
+		position: relative;
+		overflow: hidden;
+		height: 100%;
+	}
 	.list-songs{
-		float: right;
-		width:  240px;
 		li{
 			line-height: 32px;
 		}
@@ -194,4 +202,48 @@ li.on{
 			right: -1px;
 		}
 	}
+}
+.tools-bottom{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+#scroller {
+	position: absolute;
+	z-index: 1;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width: 100%;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+#scroller ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	text-align: left;
+}
+
+#scroller li {
+	padding: 0 10px;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	background-color: #fafafa;
+	font-size: 14px;
 }

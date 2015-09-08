@@ -1,9 +1,13 @@
 /// <reference path="../typings/node/node.d.ts" />
+/// <reference path="../typings/libs.d.ts" />
 /// <reference path="../typings/github-electron/github-electron-main.d.ts" />
 
 
 import app = require('app');  // Module to control application life.
 import BrowserWindow = require('browser-window');  // Module to create native browser window.
+
+import chokidar = require("chokidar");
+
 // Report crashes to our server.
 require('crash-reporter').start();
 
@@ -29,6 +33,15 @@ app.on('ready', function() {
     height: 680,
     //frame: false
     });
+    
+  var watcher = chokidar.watch("./layout.html, ", {
+    ignored: /[\/\\]\./,
+    persistent: true
+  })
+  watcher.add("app.js");
+  watcher.on("change", ()=>{
+      mainWindow.reload();
+  })
 
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/layout.html');

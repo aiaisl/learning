@@ -1,13 +1,22 @@
-var audio = document.createElement("audio");
 var fs = require("fs");
-audio.paused;
+var events = require("events");
+exports.playerEventMessage = new events.EventEmitter();
+var audio = document.createElement("audio");
+(function (SwitchMode) {
+    SwitchMode[SwitchMode["Single"] = 0] = "Single";
+    SwitchMode[SwitchMode["SingleCycle"] = 1] = "SingleCycle";
+    SwitchMode[SwitchMode["Order"] = 2] = "Order";
+    SwitchMode[SwitchMode["Cycle"] = 3] = "Cycle";
+    SwitchMode[SwitchMode["Random"] = 4] = "Random";
+})(exports.SwitchMode || (exports.SwitchMode = {}));
+var SwitchMode = exports.SwitchMode;
 var Playlist = (function () {
     function Playlist(control, voices) {
         var _this = this;
         this.control = control;
         this.voices = voices;
-        var index = parseFloat(fs.readFileSync(path.join(__dirname, "123"), "utf8"));
-        var t = parseFloat(fs.readFileSync(path.join(__dirname, "pro"), "utf8"));
+        var index = parseFloat(fs.readFileSync(path.join(__dirname, "../123"), "utf8"));
+        var t = parseFloat(fs.readFileSync(path.join(__dirname, "../pro"), "utf8"));
         if (index) {
             this.startPlay(index);
             console.log(t);
@@ -20,13 +29,57 @@ var Playlist = (function () {
             _this.next();
         };
     }
-    Playlist.prototype.next = function () {
-        this.startPlay(++this.currentVoiceIndex);
+    Playlist.prototype.next = function (control, m) {
+        var mode;
+        if (m != undefined) {
+            mode = m;
+        }
+        else {
+            mode = SwitchMode[this.switchMode];
+        }
+        switch (mode) {
+            case "Random": {
+                var newVoiceIndex = Math.floor(Math.random() * 10);
+                if (newVoiceIndex == this.currentVoiceIndex) {
+                    this.next();
+                }
+                else {
+                    this.startPlay(newVoiceIndex);
+                }
+            }
+            case "Order": {
+                if (this.currentVoiceIndex < this.voices.length - 1) {
+                    this.startPlay(++this.currentVoiceIndex);
+                }
+                else {
+                    console.log("已经是最后一首了");
+                }
+            }
+            case "Cycle": {
+                if (this.currentVoiceIndex < this.voices.length - 1) {
+                    this.startPlay(++this.currentVoiceIndex);
+                }
+                else {
+                    this.startPlay(0);
+                }
+            }
+            case "SingleCycle": {
+            }
+            case "Single": {
+                if (this.currentVoiceIndex < this.voices.length - 1) {
+                    this.startPlay(++this.currentVoiceIndex);
+                }
+                else {
+                    this.startPlay(0);
+                }
+            }
+        }
     };
     Playlist.prototype.prev = function () {
         this.startPlay(--this.currentVoiceIndex);
     };
     Playlist.prototype.startPlay = function (index) {
+        exports.playerEventMessage.emit("change", index);
         this.currentVoiceIndex = index;
         this.control.startPlay(this.voices[index]);
     };

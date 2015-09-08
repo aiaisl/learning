@@ -142,3 +142,4 @@ var Control = (function () {
     return Control;
 })();
 exports.Control = Control;
+//# sourceMappingURL=player.js.map

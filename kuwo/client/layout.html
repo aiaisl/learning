@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<title>酷我音乐</title>
 	<script src="js/lib/angular.js"></script>
-	<script src="js/lib/angular-route.js"></script>
 	<script src="js/lib/ngDialog.js"></script>
     <link rel="stylesheet" href="css/dialog/ngDialog.css">
     <link rel="stylesheet" href="css/dialog/ngDialog-theme-default.css">
@@ -50,7 +49,7 @@
 	<div class="main-content">
 		<div ng-view></div>
 	</div>
-	<div class="main-list">
+	<div class="main-list" ng-controller="ListController">
 		<div class="list-header">
 			<a href="#" ng-click="addLocalMusic()"><i class="fa fa-plus"></i>添加</a>
 			<a href="#"><i class="fa fa-trash"></i>整理</a>
@@ -99,6 +98,6 @@
 			<a href="javascript:;">工具</a>
 		</div>
 	</div>
-	<script src="app.js"></script>
+	<script src="Application.js"></script>
 </body>
 </html>

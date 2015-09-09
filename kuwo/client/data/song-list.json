@@ -1,40 +1,143 @@
 [
-	{
-		"title" : "默认列表",
-		"list" : [
-			{
-				"id" : "1",
-				"title": "Search"
-			},
-			{
-				"id" : "2",
-				"title": "暧昧"
-			},
-			{
-				"id" : "3",
-				"title": "笑忘书（现场版）"
-			},
-			{
-				"id" : "4",
-				"title": "魔鬼中的天使"
-			},
-			{
-				"id" : "5",
-				"title": "寂寞寂寞就好"
-			},
-			{
-				"id" : "6",
-				"title": "漂洋过海来看"
-			}
-		]
-	},
-	{
-		"title" :"我的电台"
-	},
-	{
-		"title" :"最近播放"
-	},
-	{
-		"title" :"新建列表"
-	}
+  {
+    "name": "默认列表",
+    "voices": [
+      {
+        "src": "C:\\Users\\Administrator\\Desktop\\Secret Garden-Song From A Secret Garden.mp3",
+        "name": "Secret Garden-Song From A Secret Garden.mp3",
+        "index": 0
+      },
+      {
+        "src": "C:\\Users\\Administrator\\Desktop\\Secret Garden-Song From A Secret Garden.mp3",
+        "name": "Secret Garden-Song From A Secret Garden.mp3",
+        "index": 1
+      },
+      {
+        "src": "C:\\Users\\Administrator\\Desktop\\Valentin-A Little Story.mp3",
+        "name": "Valentin-A Little Story.mp3",
+        "index": 2
+      },
+      {
+        "src": "C:\\Users\\Administrator\\Desktop\\黄永灿-阳光.mp3",
+        "name": "黄永灿-阳光.mp3",
+        "index": 3,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Hélène Ségara-Les Vallees D'irlande.mp3",
+        "name": "Hélène Ségara-Les Vallees D'irlande.mp3",
+        "index": 4,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Pitbull-Bon Bon.mp3",
+        "name": "Pitbull-Bon Bon.mp3",
+        "index": 5,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Beyond-大地.mp3",
+        "name": "Beyond-大地.mp3",
+        "index": 6,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Britney Spears-Everytime.mp3",
+        "name": "Britney Spears-Everytime.mp3",
+        "index": 7,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Britney Spears-Toxic.mp3",
+        "name": "Britney Spears-Toxic.mp3",
+        "index": 8,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Celine Dion-Je Ssais Pas.mp3",
+        "name": "Celine Dion-Je Ssais Pas.mp3",
+        "index": 9,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Celine Dion-Pour Que Tu M'aimes Encore.mp3",
+        "name": "Celine Dion-Pour Que Tu M'aimes Encore.mp3",
+        "index": 10
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Gregoire-J'adore.mp3",
+        "name": "Gregoire-J'adore.mp3",
+        "index": 11
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Justin Timberlake&Carey Mulligan&Stark Sands-Five Hundred Miles.mp3",
+        "name": "Justin Timberlake&Carey Mulligan&Stark Sands-Five Hundred Miles.mp3",
+        "index": 12
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Kate Miller-Heidke-Sarah.mp3",
+        "name": "Kate Miller-Heidke-Sarah.mp3",
+        "index": 13,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Katie Herzig-Hologram.mp3",
+        "name": "Katie Herzig-Hologram.mp3",
+        "index": 14,
+        "on": true
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Michelle Williams&Eric Dawkins-Need Your Help.mp3",
+        "name": "Michelle Williams&Eric Dawkins-Need Your Help.mp3",
+        "index": 15
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Pianoboy-Alone On The Way.mp3",
+        "name": "Pianoboy-Alone On The Way.mp3",
+        "index": 16,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\Priscilla Renea-Mr. Workabee.mp3",
+        "name": "Priscilla Renea-Mr. Workabee.mp3",
+        "index": 17,
+        "on": true
+      },
+      {
+        "src": "E:\\KwDownload\\song\\The Weepies-Gotta Have You.mp3",
+        "name": "The Weepies-Gotta Have You.mp3",
+        "index": 18,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\宇多田ヒカル-Prisoner Of Love.mp3",
+        "name": "宇多田ヒカル-Prisoner Of Love.mp3",
+        "index": 19,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\张国荣-Monica.mp3",
+        "name": "张国荣-Monica.mp3",
+        "index": 20,
+        "on": false
+      },
+      {
+        "src": "E:\\KwDownload\\song\\李克勤-红日.mp3",
+        "name": "李克勤-红日.mp3",
+        "index": 21,
+        "on": true
+      }
+    ],
+    "default": true
+  },
+  {
+    "name": "新建列表",
+    "voices": [],
+    "default": true
+  },
+  {
+    "name": "新建列表",
+    "voices": [],
+    "default": true
+  }
 ]

@@ -4,10 +4,11 @@
 /// <reference path="../typings/github-electron/github-electron-main.d.ts" />
 /// <reference path="../typings/node/node.d.ts" />
 /// <reference path="../typings/libs.d.ts" />
-/// <reference path="a.ts" />
 
 /// <reference path='Controller/ListController.ts' />
 /// <reference path='Controller/MainController.ts' />
+/// <reference path='Controller/ControlController.ts' />
 /// <reference path='Route/HomeRoute.ts' />
 /// <reference path='Models/Audio.ts' />
+/// <reference path='Models/PlayList.ts' />
 /// <reference path='Application.ts' />

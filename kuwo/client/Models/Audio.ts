@@ -5,7 +5,8 @@ module kuwo {
 	export interface Voice {
 		src: string;
 		name: string;
-		index: number;
+		index?: number;
+		on?: boolean;
 	}
 
 	export class Audio {
@@ -18,8 +19,12 @@ module kuwo {
 		}
 
 		startPlay(voice: Voice) {
+			if(this.voice){
+				this.voice.on = false;
+			}
 			audio.src = voice.src;
 			audio.play();
+			voice.on = true;
 			this.voice = voice;
 		}
 
@@ -33,6 +38,10 @@ module kuwo {
 
 		pause() {
 			audio.pause();
+		}
+		
+		getVoice(){
+			return this.voice;
 		}
 
 		get progress() {

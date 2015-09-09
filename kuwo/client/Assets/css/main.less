@@ -2,7 +2,9 @@
 
 @import url(font-awesome.min.css);
 @import url(reset.less);
-
+*{
+	box-sizing: border-box;
+}
 html, body{
 	height: 100%;
 	overflow: hidden;
@@ -29,14 +31,22 @@ body{
 		color: white;
 	}
 	.music-controller{
-		width: 30%;
+		width: 50%;
 		margin: 0 auto;
-		font-size: 2em;
+		font-size: 1.5em;
 		line-height: 50px;
-		margin-top: 10px;
-		.play{
-			font-size: 1.25em;
+		text-align: center;
+		.play, .pause{
+			font-size: 1.2em;
 		}
+		a{
+			margin: 2px;
+			text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+		}
+	}
+	.song-message{
+		position: absolute;
+		left: 10px;
 	}
 }
 
@@ -44,9 +54,9 @@ body{
 	width: 100%;
 	color: white;
 	overflow: hidden;
-	height: 35px;
-	line-height: 35px;
-	padding: 10px 0;
+	height: 55px;
+	line-height: 55px;
+	padding: 10px 10px;
 	a{
 		color: white;
 	}
@@ -56,34 +66,43 @@ body{
 		width: 160px;
 		font-size: 1.2em;
 		line-height: 35px;
-		margin-left: 10px;
 		.logo{
-			width: 27px;
-			height: 27px;
+			width: 35px;
+			height: 35px;
 			float: left;
 			border-radius: 50%;
 			background: rgba(0, 0, 0, 0.3);
 			padding: 4px;
-			margin-right: 10px;
 		}
 		img{
 			max-height: 100%;
 			max-width: 100%;
 		}
+		@media (max-width: 480px) {
+			width: 10%;
+			.login-text{
+				display: none;
+			}
+		}
 	}
 	.menu{
+		width: 90%;
 		float: left;
-		font-size: 1.75em;
+		font-size: 1.2em;
 		line-height: 35px;
 		li{
 			float: left;
-			margin-right: 25px;
+			width: 25%;
+			text-align: center;
 		}
 		a{
 			color: white;
 		}
 	}
 	.search{
+		@media (max-width: 480px) {
+			display: none;
+		}
 		height: 26px;
 		line-height: 26px;
 		border-radius: 13px;
@@ -112,20 +131,31 @@ body{
 .main-content{
 	width: 70%;
 	float: left;
-	height: 500px;
+	height: 100%;
+	position: relative;
 	.geci{
 		font-size: 1.2em;
 		color: white;
 		line-height: 30px;
 		text-align: center;
 	}
+	.tools-bar{
+		position: absolute;
+		background: rgba(255, 255, 255, 0.5);
+		top: 0;
+		bottom: 0;
+		width: 50px;
+	}
 }
 .main-list{
 	width: 30%;
 	float: right;
 	background: rgba(255, 255, 255, 0.8);
-	height: 500px;
+	height: 100%;
 	color: #333;
+	@media (max-width: 480px) {
+		display: none;
+	}
 	a{
 		color: #333;
 		white-space: nowrap;
@@ -154,12 +184,16 @@ body{
 		}
 	}
 	.list-content{
-		height: calc(500px-35px);
+		height: 100%;
+		position: relative;
 	}
 	.list-song-js-box{
-		position: relative;
+		position: absolute;
 		overflow: hidden;
-		height: 100%;
+		left: 80px;
+		right: 0;
+		bottom: 150px;
+		top: 0;
 	}
 	.list-songs{
 		li{

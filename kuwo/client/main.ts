@@ -38,7 +38,7 @@ app.on('ready', function() {
     ignored: /[\/\\]\./,
     persistent: true
   })
-  watcher.add("app.js");
+  watcher.add("Application.js");
   watcher.on("change", ()=>{
       mainWindow.reload();
   })

@@ -3,26 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>酷我音乐</title>
-	<script src="js/lib/angular.js"></script>
-	<script src="js/lib/ngDialog.js"></script>
-    <link rel="stylesheet" href="css/dialog/ngDialog.css">
-    <link rel="stylesheet" href="css/dialog/ngDialog-theme-default.css">
-    <link rel="stylesheet" href="css/dialog/ngDialog-theme-plain.css">
-    <link rel="stylesheet" href="css/dialog/ngDialog-custom-width.css">
-	<link rel="stylesheet" href="css/main.css">
+	<script src="Assets/js/angular.js"></script>
+	<script src="Assets/js/ngDialog.js"></script>
+    <link rel="stylesheet" href="Assets/css/dialog/ngDialog.css">
+    <link rel="stylesheet" href="Assets/css/dialog/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="Assets/css/dialog/ngDialog-theme-plain.css">
+    <link rel="stylesheet" href="Assets/css/dialog/ngDialog-custom-width.css">
+	<link rel="stylesheet" href="Assets/css/main.css">
 </head>
 <body ng-controller="MainController">
 	<div style="display:none">
 		<div class="loader-pic" ng-class="{loading: loader, loaded: !loader}">
-			<img src="images/top.jpg">
+			<img src="Assets/images/top.jpg">
 		</div>
 	</div>
 	<div class="main-header">
 		<div class="login" ng-click="login()">
 			<div class="logo">
-				<img src="images/logo.png" alt="">
+				<img src="Assets/images/logo.png" alt="">
 			</div>
-			点击登陆
+			<span class="login-text">点击登陆</span>
 		</div>
 		<div class="menu">
 			<ul>
@@ -58,19 +58,19 @@
 		</div>
 		<div class="list-content">
 			<dl class="list-title">
-				<dt><a href="#">创建列表</a></dt>
-				<dd ng-click="sayhi(key)" ng-repeat="(key, value) in songList"><a href="#">{{value.title}}</a></dd>
+				<dt><a href="#" ng-click="createPlayList()">创建列表</a></dt>
+				<dd ng-click="changeList(value)" ng-repeat="(key, value) in pls">{{value.name}}</dd>
 			</dl>
 			<div class="list-song-js-box">
 				<ul class="list-songs">
-					<li data-ng-repeat="(index, val) in voices" ng-class="{on: currentPlayMusicIndex == index}">
-						<a href="javascript:;" ng-click="startPlay(index)" ng-bind="val.name"></a>
+					<li data-ng-repeat="(index, val) in voices" ng-class="{on: val.on == true}">
+						<a href="javascript:;" ng-click="startPlay(val)" ng-bind="val.name"></a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div class="main-footer">
+	<div class="main-footer" ng-controller="ControlController">
 		<div class="lin" id="lin" ng-click="jump(event)">
 		<div class="redlin" id="redlin"></div>
 		</div>
@@ -88,7 +88,7 @@
 		<div class="music-controller">
 			<a href="javascript:;" ng-click="prev()" class="backward fa fa-step-backward"></a>
 			<a href="javascript:;" ng-click="play()" ng-show="paused" class="play fa fa-play"></a>
-			<a href="javascript:;" ng-click="pause()" ng-show="!paused" class="pause fa fa-pause"></a>
+			<a href="javascript:;" ng-click="vm.pause()" ng-show="!paused" class="pause fa fa-pause"></a>
 			<a href="javascript:;" ng-click="next()" class="forward fa fa-step-forward"></a>
 			<a href="javascript:;" class="volume fa fa-volume-down"></a>
 		</div>

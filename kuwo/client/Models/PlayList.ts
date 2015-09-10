@@ -35,6 +35,9 @@ module kuwo {
 		}
 		
 		change(pl: PL){
+			this.pls.forEach(element => {
+				element.default = false;
+			});
 			pl.default = true;
 			this.voices = pl.voices;
 			ipc.emit('playlist-add-new-voice');

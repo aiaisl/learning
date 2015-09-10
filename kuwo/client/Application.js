@@ -51,7 +51,6 @@ var kuwo;
                                     result.push(path.join(dir[0], element));
                                 }
                             });
-                            console.log(result);
                             ipc.emit('add-voice-files', result);
                         }
                     });
@@ -59,26 +58,26 @@ var kuwo;
             });
         }
     }));
+    var listManagerMenu = new Menu();
+    listManagerMenu.append(new MenuItem({
+        label: "播放",
+        click: function () {
+            console.log(1);
+        }
+    }));
+    window.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        listManagerMenu.popup(remote.getCurrentWindow());
+    }, false);
     var ListController = (function () {
         function ListController($scope, audio) {
             var _this = this;
             this.$scope = $scope;
             this.audio = audio;
-            this.scope = $scope;
-            this.scope.startPlay = function (voice) {
-                _this.audio.startPlay(voice);
-            };
-            this.scope.addLocalMusic = function () {
+            this.addLocalMusic = function () {
                 addLocalMusicMenu.popup(remote.getCurrentWindow());
             };
-            this.scope.createPlayList = function () {
-                var newPl = {
-                    name: "新建列表",
-                    voices: []
-                };
-                _this.playlist.create(newPl);
-            };
-            this.scope.changeList = function (pl) {
+            this.changeList = function (pl) {
                 _this.playlist.change(pl);
                 _this.scope.voices = _this.playlist.voices;
                 _this.scope.pls = _this.playlist.pls;
@@ -86,8 +85,16 @@ var kuwo;
                     myScroll.refresh();
                 });
             };
-            var fs = require("fs");
-            var path = require("path");
+            this.startPlay = function (voice) {
+                _this.audio.startPlay(voice);
+            };
+            this.createPlayList = function () {
+                var newPl = {
+                    name: "新建列表",
+                    voices: []
+                };
+                _this.playlist.create(newPl);
+            };
             this.scope = $scope;
             $scope.vm = this;
             this.playlist = new kuwo.PlayList();
@@ -315,6 +322,9 @@ var kuwo;
             this.pls.push(pl);
         };
         PlayList.prototype.change = function (pl) {
+            this.pls.forEach(function (element) {
+                element.default = false;
+            });
             pl.default = true;
             this.voices = pl.voices;
             ipc.emit('playlist-add-new-voice');

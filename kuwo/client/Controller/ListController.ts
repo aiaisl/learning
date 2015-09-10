@@ -49,8 +49,6 @@ module kuwo {
 									result.push(path.join(dir[0], element));
 								}
 							});
-							console.log(result);
-							
 							ipc.emit('add-voice-files', result);
 						}
 					})
@@ -59,7 +57,18 @@ module kuwo {
 			})
 		}
 	}))
-
+	var listManagerMenu:GitHubElectron.Menu = new Menu();
+	listManagerMenu.append(new MenuItem({
+		label:"播放",
+		click: function(){
+			console.log(1);
+			
+		}
+	}))
+	window.addEventListener('contextmenu', function (e) {
+		e.preventDefault();
+		listManagerMenu.popup(remote.getCurrentWindow());
+	}, false);
 	export interface IListScope extends ng.IScope {
 		vm: ListController;
 		voices: Array<Voice>;
@@ -73,36 +82,32 @@ module kuwo {
 			private audio: Audio
 		){
 			this.scope = $scope;
-			this.scope.startPlay = (voice: Voice)=>{
-				this.audio.startPlay(voice);
-			};
-			this.scope.addLocalMusic = ()=>{
-				addLocalMusicMenu.popup(remote.getCurrentWindow());
-			}
-			this.scope.createPlayList = ()=> {
-				var newPl:PL = {
-					name:"新建列表",
-					voices: []
-				}
-				this.playlist.create(newPl);
-			}
-			this.scope.changeList = (pl)=> {
-				this.playlist.change(pl);
-					this.scope.voices = this.playlist.voices;
-					this.scope.pls = this.playlist.pls;
-					setTimeout(function(){
-						myScroll.refresh();
-					})
-			}
-			var fs = require("fs");
-			var path = require("path");
-			this.scope = $scope;
 			$scope.vm = this;
 			this.playlist = new PlayList();
 			this.scope.voices = this.playlist.voices;
 			this.registerIpc();
 		}
-
+		addLocalMusic = ()=>{
+			addLocalMusicMenu.popup(remote.getCurrentWindow());
+		}
+		changeList = (pl)=> {
+			this.playlist.change(pl);
+			this.scope.voices = this.playlist.voices;
+			this.scope.pls = this.playlist.pls;
+			setTimeout(function(){
+				myScroll.refresh();
+			})
+		}
+		startPlay = (voice: Voice)=>{
+			this.audio.startPlay(voice);
+		};
+		createPlayList = ()=> {
+			var newPl:PL = {
+				name:"新建列表",
+				voices: []
+			}
+			this.playlist.create(newPl);
+		}
 		private registerIpc(){
 			ipc.on("audio-ended", (voice: Voice)=>{
 				var nextVoice = this.playlist.voices[this.playlist.voices.indexOf(voice)+1];

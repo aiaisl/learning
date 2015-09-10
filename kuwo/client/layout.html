@@ -58,13 +58,13 @@
 		</div>
 		<div class="list-content">
 			<dl class="list-title">
-				<dt><a href="#" ng-click="createPlayList()">创建列表</a></dt>
-				<dd ng-click="changeList(value)" ng-repeat="(key, value) in pls">{{value.name}}</dd>
+				<dt><a href="#" ng-click="vm.createPlayList()">创建列表</a></dt>
+				<dd ng-click="vm.changeList(value)" ng-repeat="(key, value) in pls"><input readonly type="text" ng-model="value.name"></dd>
 			</dl>
 			<div class="list-song-js-box">
 				<ul class="list-songs">
 					<li data-ng-repeat="(index, val) in voices" ng-class="{on: val.on == true}">
-						<a href="javascript:;" ng-click="startPlay(val)" ng-bind="val.name"></a>
+						<a href="javascript:;" ng-click="vm.startPlay(val)" ng-bind="val.name"></a>
 					</li>
 				</ul>
 			</div>

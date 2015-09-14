@@ -1,5 +1,7 @@
-function f(){
+declare var jquery;
+
+function f(s: string){
 	var i = "hello";
-	return i;
+	return i + s;
 }
-console.log(f().length);
+console.log(f('world').length);

@@ -79,3 +79,7 @@ getX(new CPoint(0, 0))
 getX({x:0, y:0, color:"red"});
 
 getX({x: 0});//Error
+
+function mal(a: number, b: number){
+	return a * b;
+}

@@ -103,5 +103,13 @@ module kuwo {
 				console.log("saved");
 			});
 		}
+		
+		getNextVoice(voice: Voice): Voice|boolean{
+			if(this.voices.indexOf(voice)+1<this.voices.length){
+				return this.voices[this.voices.indexOf(voice) + 1];
+			} else{
+				return false;
+			}
+		}
 	}
 }

@@ -104,10 +104,15 @@ var kuwo;
         ListController.prototype.registerIpc = function () {
             var _this = this;
             ipc.on("audio-ended", function (voice) {
-                var nextVoice = _this.playlist.voices[_this.playlist.voices.indexOf(voice) + 1];
-                _this.scope.$apply(function () {
-                    _this.audio.startPlay(nextVoice);
-                });
+                var nextVoice = _this.playlist.getNextVoice(voice);
+                if (nextVoice) {
+                    _this.scope.$apply(function () {
+                        _this.audio.startPlay(nextVoice);
+                    });
+                }
+                else {
+                    console.log("已经是最后一张图片了");
+                }
             });
             ipc.on('add-voice-files', function (files) {
                 if (!files) {
@@ -171,6 +176,9 @@ var kuwo;
         }
         ControlController.prototype.pause = function () {
             this.audio.pause();
+        };
+        ControlController.prototype.next = function () {
+            this.audio.next();
         };
         ControlController.prototype.creteProgressLine = function (audio) {
             var progress = document.getElementById("redlin");
@@ -387,6 +395,14 @@ var kuwo;
             fs.writeFile("./Data/song-list.json", angular.toJson(this.pls, true), function () {
                 console.log("saved");
             });
+        };
+        PlayList.prototype.getNextVoice = function (voice) {
+            if (this.voices.indexOf(voice) + 1 < this.voices.length) {
+                return this.voices[this.voices.indexOf(voice) + 1];
+            }
+            else {
+                return false;
+            }
         };
         return PlayList;
     })();

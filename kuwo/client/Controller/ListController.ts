@@ -110,10 +110,15 @@ module kuwo {
 		}
 		private registerIpc(){
 			ipc.on("audio-ended", (voice: Voice)=>{
-				var nextVoice = this.playlist.voices[this.playlist.voices.indexOf(voice)+1];
-				this.scope.$apply(()=>{
-					this.audio.startPlay(nextVoice);
-				})
+				var nextVoice = this.playlist.getNextVoice(voice);
+				if(nextVoice){
+					this.scope.$apply(()=>{
+						this.audio.startPlay(nextVoice);
+					})
+				} else {
+					console.log("已经是最后一张图片了");
+				}
+
 			})
 			
 			ipc.on('add-voice-files',(files: Array<String>)=>{

@@ -14,6 +14,10 @@ module kuwo {
 		pause() {
 			this.audio.pause();
 		}
+		
+		next() {
+			this.audio.next();
+		}
 
 		creteProgressLine(audio: Audio) {
 			var progress: HTMLElement = document.getElementById("redlin");
